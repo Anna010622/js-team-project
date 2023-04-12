@@ -1,0 +1,30 @@
+.main-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  @media screen and (min-width: 768px) and (max-width: 1279.98px) {
+    gap: 100px;
+  }
+  @media screen and (min-width: 1280px) {
+    flex-direction: row;
+  }
+}
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    gap: 32px;
+  }
+  @media screen and (min-width: 1280px) {
+    flex-direction: column;
+    gap: 86px;
+    max-width: 356px;
+  }
+}

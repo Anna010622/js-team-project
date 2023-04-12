@@ -1,2 +1,13 @@
-@import './common';
-@import './example';
+@import './base/common';
+@import './base/reset';
+// @import './base/base';
+
+// @import './utils/variables';
+
+@import './components/header';
+@import './components/main';
+@import './components/container';
+@import './components/categories';
+@import './components/books-section';
+@import './components/shopping-list';
+@import './components/modals';
