@@ -1,0 +1,6 @@
+body {
+  font-family: var(--main-font);
+  @include font(14px, 1.29, 0.04em);
+  color: var(--main-text-color);
+  background-color: --main-bg-color;
+}
