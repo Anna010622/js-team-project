@@ -1,0 +1,47 @@
+.categories-section {
+  height: 228px;
+  width: 100%;
+  overflow-y: scroll;
+
+  @media screen and (min-width: 768px) {
+    height: 472px;
+    width: 50%;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 100%;
+  }
+}
+.categories__list {
+}
+.categories__item {
+  margin-bottom: 24px;
+  @media screen and (min-width: 768px) {
+    margin-bottom: 32px;
+  }
+}
+
+.categories__link {
+  font-size: 16px;
+  line-height: calc(18 / 16);
+  letter-spacing: -0.02em;
+  color: var(--secondary-text-color);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--accent-color);
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .dark & {
+    color: var(--secondary-text-color-dark-bg);
+
+    &:hover {
+      color: var(--accent-color-dark-bg);
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+    line-height: calc(24 / 18);
+  }
+}
