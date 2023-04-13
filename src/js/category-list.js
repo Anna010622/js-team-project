@@ -20,7 +20,7 @@ showCategories();
 function createCategoryItemMarkup(category) {
   return `
     <li class="categories__item">
-      <a class="categories__link" data-value="${category}">
+      <a class="categories__link js-click-link" data-value="${category}">
         ${category}
        </a>
     </li>

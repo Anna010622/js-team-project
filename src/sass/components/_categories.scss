@@ -27,7 +27,10 @@
   color: var(--secondary-text-color);
   cursor: pointer;
 
-  &:hover {
+  transition: color 2500ms linear;
+
+  &:hover,
+  &:focus {
     color: var(--accent-color);
     font-weight: 700;
     text-transform: uppercase;
@@ -35,7 +38,8 @@
   .dark & {
     color: var(--secondary-text-color-dark-bg);
 
-    &:hover {
+    &:hover,
+    &:focus {
       color: var(--accent-color-dark-bg);
     }
   }
@@ -43,5 +47,15 @@
   @media screen and (min-width: 768px) {
     font-size: 18px;
     line-height: calc(24 / 18);
+  }
+}
+.current-category {
+  transition: color 2500ms linear;
+
+  color: var(--accent-color);
+  font-weight: 700;
+  text-transform: uppercase;
+  .dark & {
+    color: var(--accent-color-dark-bg);
   }
 }

@@ -28,3 +28,9 @@
     max-width: 356px;
   }
 }
+.shopping-list-sidebar {
+  display: none;
+  @media screen and (min-width: 1280px) {
+    max-width: 356px;
+  }
+}

@@ -1,10 +1,10 @@
 //Base
 @import './base/common';
 @import './base/reset';
-// @import './base/base';
+@import './base/base';
 
 //Utils
-// @import './utils/variables';
+@import './utils/variables';
 
 //Component
 @import './components/header';
@@ -14,3 +14,4 @@
 @import './components/books-section';
 @import './components/shopping-list';
 @import './components/modals';
+@import './components/scroll-up-btn';

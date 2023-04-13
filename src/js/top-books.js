@@ -1,8 +1,8 @@
 import { getTopBooks } from './get-top-books';
-import { createBookMarkup } from './books-by-category';
+import { createBookMarkup } from './create-book-markup';
 
 const booksSectionEl = document.querySelector('.books-section');
-const allCategories = document.querySelector('#all-categories');
+const allCategories = document.querySelector('[data-value="all-categories"]');
 
 const mediaValue = window.matchMedia(
   '(min-width: 768px) and (max-width: 1279.98px)'

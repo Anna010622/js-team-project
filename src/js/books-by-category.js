@@ -1,5 +1,5 @@
 import { getBooksByCategory } from './get-books-by-category';
-import { trimString } from './trim-string';
+import { createBookMarkup } from './create-book-markup';
 
 const booksSectionEl = document.querySelector('.books-section');
 const mainEl = document.querySelector('main');
@@ -19,41 +19,16 @@ async function showBooksByCategory(event) {
     const sectionMarkup = createSectionMarkup(selectedCategory, books);
 
     booksSectionEl.innerHTML = sectionMarkup;
+
+    if (event.target.classList.contains('js-click-link')) {
+      const currentLink = document.querySelector('.current-category');
+      currentLink.classList.remove('current-category');
+
+      event.target.classList.add('current-category');
+    }
   } catch (error) {
     console.log(error);
   }
-}
-
-export function createBookMarkup({ book_image, _id, title, author }) {
-  let size = 30;
-  if (window.matchMedia('(min-width: 768px)').matches) {
-    size = 22;
-  }
-  if (window.matchMedia('(min-width: 1280px)').matches) {
-    size = 15;
-  }
-  const trimmedTitle = trimString(title, size);
-
-  let size2 = 55;
-  if (window.matchMedia('(min-width: 768px)').matches) {
-    size2 = 37;
-  }
-  if (window.matchMedia('(min-width: 1280px)').matches) {
-    size2 = 25;
-  }
-  const trimmedAuthor = trimString(title, size2);
-
-  return `
-    <li class="books-list__item book">
-      <div class="book__img-wrapper">
-        <img class="book__img" src="${book_image}" alt="book's image" data-book="${_id}" />
-      </div>
-      <div class="book__text" data-book="${_id}>
-        <h3 class="book__title" data-book="${_id}">${trimmedTitle}</h3>
-        <p class="book__author" data-book="${_id}">${trimmedAuthor}</p>
-      </div>
-    </li>
-  `;
 }
 
 function createSectionMarkup(selectedCategory, books) {
