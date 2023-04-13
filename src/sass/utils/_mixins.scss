@@ -1,0 +1,13 @@
+@mixin transition($property...) {
+  transition-property: $property;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+// щоб підключити цей міксин до себе в код напишіть  @include transition(через кому значення які вам потрібні, наприклад:background-color);
+
+@mixin font($size, $lh, $ls) {
+  font-size: $size;
+  line-height: $lh;
+  letter-spacing: $ls;
+}
+// щоб підключити цей міксин до себе в код напишіть  @include font(через кому значення які вам потрібні, наприклад: 16px, 1.17, 0.04em);
