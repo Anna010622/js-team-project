@@ -1,6 +1,24 @@
+html {
+  scroll-behavior: smooth;
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #e0e0e0;
+    border-radius: 12px;
+    .dark & {
+      background: #111111;
+    }
+  }
+}
+
 body {
   font-family: var(--main-font);
-  @include font(14px, 1.29, 0.04em);
   color: var(--main-text-color);
-  background-color: --main-bg-color;
+  background-color: var(--main-bg-color);
+
+  &.dark {
+    color: var(--main-text-color-dark-bg);
+    background-color: var(--main-bg-color-dark-bg);
+  }
 }
