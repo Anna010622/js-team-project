@@ -1,0 +1,30 @@
+:root {
+  --accent-color: #4f2ee8;
+  --accent-color-dark-bg: #eac645;
+
+  /* Fonts */
+  --main-font: 'DM Sans', 'Open Sans', 'Roboto', 'Montserrat', sans-serif;
+
+  /* Text colors */
+  --main-text-color: #111111;
+  --main-text-color-dark-bg: #ffffff;
+
+  --secondary-text-color: rgba(17, 17, 17, 0.6);
+  --secondary-text-color-dark-bg: rgba(255, 255, 255, 0.6);
+
+  --secondary-title-color: #b4afaf;
+
+  /* BG colors */
+  --main-bg-color: #f6f6f6;
+  --main-bg-color-dark-bg: #202024;
+
+  --scroll-bar-bg-color: #e0e0e0;
+  --scroll-bar-bg-color: rgba(17, 17, 17, 0.6);
+
+  /* Others */
+
+  --indent-tablet-card: 25px;
+  --indent-desktop-card: 24px;
+  --items-tablet-card: 3;
+  --items-desktop-card: 5;
+}
