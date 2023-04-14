@@ -1,6 +1,6 @@
 (function () {
-  var a = document.querySelectorAll('.nav a');
-  for (var i = a.length; i--; ) {
+  const a = document.querySelectorAll('.nav a');
+  for (let i = a.length; i--; ) {
     if (
       a[i].href === window.location.pathname ||
       a[i].href === window.location.href

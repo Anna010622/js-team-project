@@ -1,12 +1,11 @@
 .mobile-menu {
-  position: absolute;
-  // position: fixed;
+  // position: absolute;
+  position: fixed;
 
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
-
   background: radial-gradient(
     183.6% 183.01% at 59.76% -23.42%,
     #4f2ee8 18.03%,
@@ -14,10 +13,10 @@
   );
 
   transform: translateX(-100%);
-  //   @include transition(transform);
+  // @include transition(transform);
   transition: transform 250ms linear;
 
-  z-index: 99;
+  z-index: 999;
 
   overflow-y: scroll;
   @media screen and (min-width: 768px) {
@@ -41,14 +40,14 @@
     max-width: 480px;
   }
 
-  // @media screen and (min-width: 768px) {
-  //   width: 768px;
-  // }
+  @media screen and (min-width: 768px) {
+    width: 768px;
+  }
 }
 
 .mobile-menu__close {
   position: absolute;
-  top: 16px;
+  top: 500px;
   right: 20px;
   margin: 0;
   padding: 0;
@@ -58,7 +57,7 @@
   border: none;
 
   fill: var(--main-text-color);
-  //   @include transition(fill);
+  // @include transition(fill);
 
   &:hover,
   &:focus {
@@ -126,12 +125,12 @@
   line-height: 1.22;
 
   color: #fcfcfc;
-  //   @include transition(color);
+  // @include transition(color);
 
   @media screen and (min-width: 768px) {
     font-size: 48px;
   }
-  //   @include transition(color);
+  // @include transition(color);
 
   &:hover,
   &:focus {
@@ -148,3 +147,43 @@
     display: none;
   }
 }
+
+// .mobile-menu__button {
+//   display: inline-block;
+
+//   margin: 0 auto;
+
+//   border: none;
+//   max-width: 152px;
+//   padding: 12px 36px;
+//   border: none;
+//   border-radius: 10px;
+
+//   font-weight: 600;
+//   font-size: 14px;
+//   line-height: 1.21;
+//   color: #000000;
+//   background-color: #f8d24e;
+//   cursor: pointer;
+
+//   &:hover {
+//     background-color: #0a8817;
+//   }
+
+//   &:focus {
+//     background-color: #0a8817;
+//     color: #ffffff;
+//   }
+
+//   &[disabled] {
+//     background-color: #ababab;
+//   }
+
+//   @media screen and (min-width: 768px) {
+//     display: none;
+//   }
+// }
+
+// .mobile-menu__last-button-special-symbol {
+//   margin-left: 4px;
+// }
