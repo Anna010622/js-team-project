@@ -1,4 +1,5 @@
-window.addEventListener('load', function () {
-  const loader = document.querySelector('.loader');
-  loader.className += ' hidden'; // class "loader hidden"
+const mask = document.querySelector('.mask');
+
+window.addEventListener('load', () => {
+  mask.classList.add('hide');
 });
