@@ -1,6 +1,7 @@
 .mobile-menu {
   // position: absolute;
   position: fixed;
+  // display: flex;
 
   top: 0;
   left: 0;
@@ -46,13 +47,13 @@
 }
 
 .mobile-menu__close {
-  position: absolute;
+  // position: absolute;
   top: 500px;
   right: 20px;
-  margin: 0;
+  margin-left: 14px;
   padding: 0;
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   background-color: var(--main-bg-color);
   border: none;
 
@@ -147,7 +148,9 @@
     display: none;
   }
 }
-
+.header-mobile {
+  background: var(--main-bg-color);
+}
 // .mobile-menu__button {
 //   display: inline-block;
 
