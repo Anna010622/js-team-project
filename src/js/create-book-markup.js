@@ -3,7 +3,7 @@ import { trimString } from './trim-string';
 export function createBookMarkup({ book_image, _id, title, author }) {
   let size = 30;
   if (window.matchMedia('(min-width: 768px)').matches) {
-    size = 22;
+    size = 20;
   }
   if (window.matchMedia('(min-width: 1280px)').matches) {
     size = 15;

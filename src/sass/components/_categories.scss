@@ -27,7 +27,7 @@
   color: var(--secondary-text-color);
   cursor: pointer;
 
-  transition: color 2500ms linear;
+  transition: color 250ms linear;
 
   &:hover,
   &:focus {
@@ -50,7 +50,7 @@
   }
 }
 .current-category {
-  transition: color 2500ms linear;
+  transition: color 250ms linear;
 
   color: var(--accent-color);
   font-weight: 700;

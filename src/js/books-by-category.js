@@ -12,6 +12,11 @@ async function showBooksByCategory(event) {
   }
   const selectedCategory = event.target.dataset.value;
 
+  addClassCurrentCategory(selectedCategory);
+
+  if (selectedCategory === 'all-categories') {
+    return;
+  }
   try {
     const response = await getBooksByCategory(selectedCategory);
     const books = response.data.map(book => createBookMarkup(book)).join(' ');
@@ -19,13 +24,6 @@ async function showBooksByCategory(event) {
     const sectionMarkup = createSectionMarkup(selectedCategory, books);
 
     booksSectionEl.innerHTML = sectionMarkup;
-
-    if (event.target.classList.contains('js-click-link')) {
-      const currentLink = document.querySelector('.current-category');
-      currentLink.classList.remove('current-category');
-
-      event.target.classList.add('current-category');
-    }
   } catch (error) {
     console.log(error);
   }
@@ -43,4 +41,16 @@ function createSectionMarkup(selectedCategory, books) {
               </ul>
             </div>
       `;
+}
+
+function addClassCurrentCategory(selectedCategory) {
+  const allLinks = document.querySelectorAll('.js-click-link');
+  allLinks.forEach(link => {
+    if (link.classList.contains('current-category')) {
+      link.classList.remove('current-category');
+    }
+    if (link.dataset.value === selectedCategory) {
+      link.classList.add('current-category');
+    }
+  });
 }
