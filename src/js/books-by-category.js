@@ -1,5 +1,6 @@
 import { getBooksByCategory } from './get-books-by-category';
 import { createBookMarkup } from './create-book-markup';
+import showHideLoader from './loader';
 
 const booksSectionEl = document.querySelector('.books-section');
 const mainEl = document.querySelector('main');
@@ -11,9 +12,10 @@ async function showBooksByCategory(event) {
     return;
   }
   const selectedCategory = event.target.dataset.value;
-
+  showHideLoader();
   try {
     const response = await getBooksByCategory(selectedCategory);
+
     const books = response.data.map(book => createBookMarkup(book)).join(' ');
 
     const sectionMarkup = createSectionMarkup(selectedCategory, books);
@@ -29,6 +31,7 @@ async function showBooksByCategory(event) {
   } catch (error) {
     console.log(error);
   }
+  showHideLoader();
 }
 
 function createSectionMarkup(selectedCategory, books) {

@@ -1,27 +1,54 @@
+/* Loader */
+
 .loader {
-  width: 100px;
-  height: 100px;
-  border: 15px solid rgba(63, 138, 191, 0.6);
-  border-radius: 50%;
-  border-left-color: #1280c0;
-  animation: loader 1300ms linear infinite;
+  position: fixed;
+  display: flex;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.25s;
+  transition-delay: 0.3s;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  font-size: 100pt;
+  content: '';
+  animation: spin 4s linear infinite;
 }
-@keyframes loader {
-  100% {
+
+.loader.is-active {
+  top: 0;
+  left: 0;
+  opacity: 1;
+  display: flex;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
     transform: rotate(360deg);
   }
 }
-.mask {
-  width: 100%;
-  height: 100%;
+
+.backdrop {
   position: fixed;
   top: 0;
+  left: 0;
+  opacity: 1;
+  visibility: visible;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 100;
-  transition: 600ms;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
-.hide {
-  display: none;
+
+.backdrop__is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
 }

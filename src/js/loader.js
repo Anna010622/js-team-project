@@ -1,5 +1,5 @@
-const mask = document.querySelector('.mask');
+const loader = document.querySelector('.js-page-loader');
 
-window.addEventListener('load', () => {
-  mask.classList.add('hide');
-});
+export default function showHideLoader() {
+  loader.classList.toggle('backdrop__is-hidden');
+}
