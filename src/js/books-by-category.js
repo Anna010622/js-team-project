@@ -1,5 +1,6 @@
 import { getBooksByCategory } from './get-books-by-category';
 import { createBookMarkup } from './create-book-markup';
+import { createMessageMarkup } from './message-markup';
 
 const booksSectionEl = document.querySelector('.books-section');
 const mainEl = document.querySelector('main');
@@ -19,6 +20,16 @@ async function showBooksByCategory(event) {
   }
   try {
     const response = await getBooksByCategory(selectedCategory);
+
+    if (response.data.length === 0) {
+      const sectionMarkup = createMessageMarkup(
+        selectedCategory,
+        'There are no books'
+      );
+      booksSectionEl.innerHTML = sectionMarkup;
+      return;
+    }
+
     const books = response.data.map(book => createBookMarkup(book)).join(' ');
 
     const sectionMarkup = createSectionMarkup(selectedCategory, books);
