@@ -1,5 +1,6 @@
 import { getBooksByCategory } from './get-books-by-category';
 import { createBookMarkup } from './create-book-markup';
+import { createMessageMarkup } from './message-markup';
 import showHideLoader from './loader';
 
 const booksSectionEl = document.querySelector('.books-section');
@@ -12,22 +13,33 @@ async function showBooksByCategory(event) {
     return;
   }
   const selectedCategory = event.target.dataset.value;
+
   showHideLoader();
   try {
     const response = await getBooksByCategory(selectedCategory);
+    
+    addClassCurrentCategory(selectedCategory);
 
+  if (selectedCategory === 'all-categories') {
+    return;
+  }
+  
+  try {
+    const response = await getBooksByCategory(selectedCategory);
+
+    if (response.data.length === 0) {
+      const sectionMarkup = createMessageMarkup(
+        selectedCategory,
+        'There are no books'
+      );
+      booksSectionEl.innerHTML = sectionMarkup;
+      return;
+    }
     const books = response.data.map(book => createBookMarkup(book)).join(' ');
 
     const sectionMarkup = createSectionMarkup(selectedCategory, books);
 
     booksSectionEl.innerHTML = sectionMarkup;
-
-    if (event.target.classList.contains('js-click-link')) {
-      const currentLink = document.querySelector('.current-category');
-      currentLink.classList.remove('current-category');
-
-      event.target.classList.add('current-category');
-    }
   } catch (error) {
     console.log(error);
   }
@@ -46,4 +58,16 @@ function createSectionMarkup(selectedCategory, books) {
               </ul>
             </div>
       `;
+}
+
+function addClassCurrentCategory(selectedCategory) {
+  const allLinks = document.querySelectorAll('.js-click-link');
+  allLinks.forEach(link => {
+    if (link.classList.contains('current-category')) {
+      link.classList.remove('current-category');
+    }
+    if (link.dataset.value === selectedCategory) {
+      link.classList.add('current-category');
+    }
+  });
 }

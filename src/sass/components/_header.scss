@@ -1,0 +1,230 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--main-bg-color);
+}
+
+.header__container {
+  // position: sticky;
+  // top: 0;
+  display: flex;
+  align-items: center;
+  border: 1.5px solid #111111;
+  border-radius: 0px 0px 8px 8px;
+  padding: 18px;
+
+  @media screen and (min-width: 768px) {
+    padding: 12px;
+  }
+  @media screen and (min-width: 1280px) {
+    // padding-top: 8px;
+    // padding-bottom: 8px;
+  }
+}
+
+.logo__header {
+  margin-left: 24px;
+}
+.header__logo-img {
+  width: 86px;
+  height: 28px;
+  @media screen and (max-width: 768px) {
+    width: 83px;
+  }
+}
+.nav__link--current {
+  background-color: var(--accent-color-dark-bg);
+  font-weight: 700;
+}
+
+.nav {
+  // gap: 16px;
+
+  display: none;
+  @media screen and (min-width: 767.98px) {
+    margin-left: 32px;
+    display: flex;
+  }
+  @media screen and (min-width: 1279.98px) {
+    // gap: 24px;
+    margin-left: 100px;
+  }
+}
+
+.icon_shop {
+  margin-left: 4px;
+  // display: block;
+}
+
+.nav__link {
+  display: flex;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: calc(18 / 14);
+  border-radius: 36px;
+
+  min-width: 72px;
+  // min-height: 34px;
+  padding: 8px 16px;
+
+  // padding-top: 32px;
+  // padding-bottom: 13px;
+  transition: background-color 250ms linear, color 250ms linear;
+
+  &:hover,
+  &:focus {
+    background-color: var(--accent-color-dark-bg);
+    font-weight: 700;
+  }
+}
+
+.header__button {
+  display: block;
+  position: relative;
+  min-width: 184px;
+  min-height: 48px;
+  background: var(--accent-color);
+  border: 1.5px solid #111111;
+  border-radius: 18px;
+  color: #ffffff;
+  overflow: hidden;
+  padding: 14px;
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: calc(18 / 14);
+
+  //   margin-left: 24px;
+
+  @media screen and (max-width: 767.98px) {
+    display: none;
+    margin-left: 32px;
+  }
+  @media screen and (min-width: 768px) {
+    align-self: flex-end;
+    margin-left: 24px;
+  }
+}
+
+.header__button:before {
+  content: '';
+  width: 100%;
+  height: 200%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+
+  background: linear-gradient(
+    to left,
+    transparent 0%,
+    #fff 40%,
+    #fff 60%,
+    transparent 100%
+  );
+  transform: translate(-100%, -25%) rotate(-25deg);
+  animation: blick 7s infinite;
+}
+
+.header__burger {
+  border: none;
+  margin-left: 14px;
+  background-color: transparent;
+  padding: 0;
+  // padding-top: 17px;
+  // padding-bottom: 17px;
+  cursor: pointer;
+
+  @media screen and (min-width: 768px) {
+    display: none;
+    margin-left: 14px;
+    // padding-top: 19px;
+    // padding-bottom: 19px;
+  }
+  // @media screen and (min-width: 1200px) {
+
+  // }
+}
+
+.burger__icon {
+  fill: #0b0b0b;
+}
+
+// .back-scroll {
+//   width: 50;
+//   height: 50;
+//   border-radius: 50%;
+//   border-bottom: 1px;
+//   background-color: rgba(248, 210, 78, 0.5);
+//   text-align: center;
+//   padding: 5px;
+//   position: fixed;
+//   bottom: 50vh;
+//   right: 16px;
+//   cursor: pointer;
+//   color: var(--main-bg-color);
+//   font-size: 30px;
+//   z-index: 998;
+// }
+
+.switch {
+  display: inline-block;
+  position: relative;
+  width: 40px;
+  height: 24px;
+  margin-left: auto;
+}
+.switch__input {
+  height: 0;
+  width: 0;
+  opacity: 0;
+}
+
+.switch__slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  border-radius: 34px;
+  background: linear-gradient(180deg, #4f2ee8 0%, #dcdcdc 100%);
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.1);
+  transition: 0.4s;
+}
+
+.switch__slider:before {
+  content: '';
+  position: absolute;
+  cursor: pointer;
+  left: 1px;
+  bottom: 3px;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #ffffff 0%, #f7f7f7 100%);
+  transition: 0.4s;
+}
+
+.switch__input:checked + .switch__slider {
+  background: linear-gradient(180deg, #4f2ee8 0%, #686868 100%);
+  transition: background 0.4s;
+}
+
+.switch__input:checked + .switch__slider:before {
+  transform: translateX(20px);
+}
+
+// animation
+@keyframes blick {
+  0% {
+    transform: translate(-110%, 50%) rotate(40deg);
+  }
+  20% {
+    transform: translate(110%, -50%) rotate(40deg);
+  }
+  100% {
+    transform: translate(110%, -50%) rotate(40deg);
+  }
+}

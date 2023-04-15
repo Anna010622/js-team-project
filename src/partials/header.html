@@ -1,4 +1,96 @@
-<header>
-  <a href="./index.html">Home</a>
-  <a href="./shoppinglist.html">Shopping list</a>
+<header class="header">
+  <div class="container header__container">
+    <a class="logo__header" href="./index.html">
+      <img
+        width="86"
+        height="28"
+        class="header__logo-img"
+        src="./images/logo_big.svg"
+        alt="Logo"
+        loading="lazy"
+      />
+      <!-- <picture width="25" height="25"> -->
+      <!-- <source
+          media="(min-width: 1200px)"
+          srcset="
+            ./images/header/logo_l@1x.png 1x,
+            ./images/header/logo_l@2x.png 2x
+          "
+        /> -->
+      <!-- <source
+          media="(min-width: 768px)"
+          srcset="
+            ./images/header/logo_m@1x.png 1x,
+            ./images/header/logo_m@2x.png 2x
+          "
+        /> -->
+      <!-- <source
+          media="(max-width: 767px)"
+          srcset="
+            ./images/header/logo_s@1x.png 1x,
+            ./images/header/logo_s@2x.png 2x
+          "
+        /> -->
+      <!-- <img
+          class="header__logo-img"
+          src="./images/header/logo_s@1x.png"
+          alt="Logo"
+          loading="lazy"
+        /> -->
+      <!-- </picture> -->
+      <span></span>
+    </a>
+    <nav>
+      <ul class="nav">
+        <li class="nav__item">
+          <a href="./index.html" class="nav__link">HOME</a>
+        </li>
+        <li class="nav__item">
+          <a href="./shoppinglist.html" class="nav__link"
+            >SHOPPING LIST
+            <svg class="icon_shop" width="13" height="16">
+              <use href="./images/icons.svg#icon-user"></use>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <label class="switch">
+      <input type="checkbox" class="switch__input" />
+      <span class="switch__slider"></span>
+    </label>
+    <button
+      class="menu-toggle js-open-menu header__burger"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <svg class="burger__icon" width="28" height="28">
+        <use href="./images/icons.svg#icon-user"></use>
+      </svg>
+    </button>
+    <button
+      type="button"
+      class="js-open-modal button header__button"
+      data-modal="buynow"
+    >
+      Sign up
+      <!-- <svg class="button__icon" width="12" height="12">
+        <use href="./images/icons.svg#icon-arrow-right"></use>
+      </svg> -->
+    </button>
+  </div>
+  <div class="mobile-menu js-menu-container js-open-menu" id="mobile-menu">
+    <div class="mobile-menu__container">
+      <button type="button" class="mobile-menu__close js-close-menu">
+        <svg
+          class="mobile-menu__icon"
+          width="32"
+          height="32"
+          aria-label="Закриття мoбільного меню"
+        >
+          <use href="./images/icons.svg#icon-close"></use>
+        </svg>
+      </button>
+    </div>
+  </div>
 </header>

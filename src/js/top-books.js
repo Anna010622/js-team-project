@@ -1,5 +1,6 @@
 import { getTopBooks } from './get-top-books';
 import { createBookMarkup } from './create-book-markup';
+import { createMessageMarkup } from './message-markup';
 import showHideLoader from './loader';
 
 const booksSectionEl = document.querySelector('.books-section');
@@ -18,7 +19,17 @@ async function getAllBooks() {
   showHideLoader();
   try {
     const response = await getTopBooks();
-    const allTopBooks = await response.data;
+
+    if (response.data.length === 0) {
+      const sectionMarkup = createMessageMarkup(
+        selectedCategory,
+        'There are no books'
+      );
+      booksSectionEl.innerHTML = sectionMarkup;
+      return;
+    }
+
+    const allTopBooks = response.data;
 
     const items = allTopBooks.map(item => {
       const books = item.books;
