@@ -13,17 +13,14 @@ async function showBooksByCategory(event) {
     return;
   }
   const selectedCategory = event.target.dataset.value;
-
-  showHideLoader();
-  try {
-    const response = await getBooksByCategory(selectedCategory);
-    
-    addClassCurrentCategory(selectedCategory);
+  addClassCurrentCategory(selectedCategory);
 
   if (selectedCategory === 'all-categories') {
     return;
   }
-  
+
+  showHideLoader();
+
   try {
     const response = await getBooksByCategory(selectedCategory);
 
@@ -35,6 +32,7 @@ async function showBooksByCategory(event) {
       booksSectionEl.innerHTML = sectionMarkup;
       return;
     }
+
     const books = response.data.map(book => createBookMarkup(book)).join(' ');
 
     const sectionMarkup = createSectionMarkup(selectedCategory, books);
