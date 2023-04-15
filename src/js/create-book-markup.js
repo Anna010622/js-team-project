@@ -20,7 +20,7 @@ export function createBookMarkup({ book_image, _id, title, author }) {
   const trimmedAuthor = trimString(author, size2);
 
   return `
-    <li class="books-list__item book">
+    <li class="books-list__item book" data-modal-book-open>
       <div class="book__img-wrapper">
         <img class="book__img" src="${book_image}" alt="book's image" data-book="${_id}" />
         <div class="book__overlay" data-book="${_id}">

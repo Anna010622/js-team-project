@@ -1,5 +1,6 @@
 // import { sendAddedToStorage } from './local-storage-set';
 // import { createBookMarkup } from "./create-book-markup";
+import axios from 'axios'
 
 const openModalBookEl = document.querySelector('[data-modal-book-open]');
 const closeModalBookBtn = document.querySelector('[data-modal-book-close]');
@@ -9,6 +10,27 @@ const modalBookInf = document.querySelector('[data-modal-book-inf]');
 openModalBookEl.addEventListener('click', onOpenModalBook);
 closeModalBookBtn.addEventListener('click', onCloseModalBook);
 modalBook.addEventListener('click', onBackdropClick);
+
+bookSectionEl.addEventListener('click', onBookClick);
+async function onBookClick(event) {
+  if(!event.target.dataset.book) {
+    return;
+  }
+
+  try {
+    const bookId = event.target.dataset.book;
+    const response = await getBookById(bookId);
+    const book = response.data;
+    console.log(book);
+  }
+  catch (error) {
+    console.log(error);
+  }
+}
+function getBookById(bookid) {
+  const URL = `https://books-backend.p.goit.global/books/top-books/${bookid}`;
+  return axios.get(URL);
+}
 
 let currentId = null;
 
@@ -25,7 +47,7 @@ async function onOpenModalBook(e) {
     const bookDetailsById = await api.getBookById(bookId);
     // console.log('bookDetailsById', bookDetailsById);
 
-    renderModal(bookDetailsById);
+    createBookMarkup(bookDetailsById);
   }
 
   window.addEventListener('keydown', onEscKeyPress);
@@ -33,15 +55,15 @@ async function onOpenModalBook(e) {
  modalBook.classList.add('show-modal');
 }
 
-function renderModal(bookById) {
+function createBookMarkup(bookById) {
   modalBookInf.innerHTML = '';
 
-  // console.log('books', bookById);
+  console.log('books', bookById);
 
-  const { book_image, _id, title, author, buy_links } =
+  const { book_image, _id, title, author } =
   bookById;
 
-  const markup = `<li class="books-list__item book">
+  const markup = `<li class="books-list__item book" data-modal-book-open>
   <div class="book__img-wrapper">
     <img class="book__img" src="${book_image}" alt="book's image" data-book="${_id}" />
     <div class="book__overlay" data-book="${_id}">
@@ -53,14 +75,6 @@ function renderModal(bookById) {
     <p class="book__author" data-book="${_id}">${author}</p>
   </div>
   <div class="book-shops">
-  <a
-  class="book-shops-link"
-  href="${buy_links.url}"
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="${buy_links.name}"
->
-</a>
   </div>
   </li>
   `;
