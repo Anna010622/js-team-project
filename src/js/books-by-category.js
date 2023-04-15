@@ -1,6 +1,7 @@
 import { getBooksByCategory } from './get-books-by-category';
 import { createBookMarkup } from './create-book-markup';
 import { createMessageMarkup } from './message-markup';
+import showHideLoader from './loader';
 
 const booksSectionEl = document.querySelector('.books-section');
 const mainEl = document.querySelector('main');
@@ -13,11 +14,16 @@ async function showBooksByCategory(event) {
   }
   const selectedCategory = event.target.dataset.value;
 
-  addClassCurrentCategory(selectedCategory);
+  showHideLoader();
+  try {
+    const response = await getBooksByCategory(selectedCategory);
+    
+    addClassCurrentCategory(selectedCategory);
 
   if (selectedCategory === 'all-categories') {
     return;
   }
+  
   try {
     const response = await getBooksByCategory(selectedCategory);
 
@@ -29,7 +35,6 @@ async function showBooksByCategory(event) {
       booksSectionEl.innerHTML = sectionMarkup;
       return;
     }
-
     const books = response.data.map(book => createBookMarkup(book)).join(' ');
 
     const sectionMarkup = createSectionMarkup(selectedCategory, books);
@@ -38,6 +43,7 @@ async function showBooksByCategory(event) {
   } catch (error) {
     console.log(error);
   }
+  showHideLoader();
 }
 
 function createSectionMarkup(selectedCategory, books) {

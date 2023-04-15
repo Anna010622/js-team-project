@@ -1,6 +1,7 @@
 import { getTopBooks } from './get-top-books';
 import { createBookMarkup } from './create-book-markup';
 import { createMessageMarkup } from './message-markup';
+import showHideLoader from './loader';
 
 const booksSectionEl = document.querySelector('.books-section');
 const allCategories = document.querySelector('[data-value="all-categories"]');
@@ -8,12 +9,14 @@ const allCategories = document.querySelector('[data-value="all-categories"]');
 const mediaValue = window.matchMedia(
   '(min-width: 768px) and (max-width: 1279.98px)'
 );
+
 getAllBooks();
 mediaValue.addEventListener('change', getAllBooks);
 
 allCategories.addEventListener('click', getAllBooks);
 
 async function getAllBooks() {
+  showHideLoader();
   try {
     const response = await getTopBooks();
 
@@ -56,10 +59,12 @@ async function getAllBooks() {
     });
 
     const sectionMarkup = createSectionMarkup(items.join(' '));
+
     booksSectionEl.innerHTML = sectionMarkup;
   } catch (error) {
     console.log(error);
   }
+  showHideLoader();
 }
 
 function createSectionListItemMarkup(section, bookMarkup) {
