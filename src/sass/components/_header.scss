@@ -8,6 +8,7 @@
 .header__container {
   // position: sticky;
   // top: 0;
+  background: var(--main-bg-color);
   display: flex;
   align-items: center;
   border: 1.5px solid #111111;
@@ -32,10 +33,6 @@
   @media screen and (max-width: 768px) {
     width: 83px;
   }
-}
-.nav__link--current {
-  background-color: var(--accent-color-dark-bg);
-  font-weight: 700;
 }
 
 .nav {
@@ -63,7 +60,7 @@
   font-size: 14px;
   line-height: calc(18 / 14);
   border-radius: 36px;
-
+  align-items: flex-end;
   min-width: 72px;
   // min-height: 34px;
   padding: 8px 16px;
@@ -77,6 +74,11 @@
     background-color: var(--accent-color-dark-bg);
     font-weight: 700;
   }
+}
+
+.nav__link--current {
+  background-color: var(--accent-color-dark-bg);
+  font-weight: 700;
 }
 
 .header__button {
@@ -151,6 +153,11 @@
 
 .burger__icon {
   fill: #111111;
+  &:hover,
+  &:focus {
+    fill: var(--accent-color);
+    outline: none;
+  }
 }
 .button__icon {
   fill: var(--accent-color-dark-bg);

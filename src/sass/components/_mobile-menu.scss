@@ -14,8 +14,9 @@
     #ffffff 100%
   );
 
-  transform: translateX(-100%);
-  // @include transition(transform);
+  transform: translateY(-100%);
+
+  // // @include transition(transform);
   transition: transform 250ms linear;
 
   z-index: 999;
@@ -33,11 +34,11 @@
   width: 98vw;
   // width: 450px;
   // height: 100vw;
-  height: 340px;
+  height: 400px;
   background: url('./../images/book_mobile__.png');
   // background-size: contain;
   background-size: cover;
-  top: 70%;
+  top: 50%;
   left: 0;
   // transform: translate(-10%, -80%);
 
@@ -168,7 +169,8 @@
     display: none;
   }
 }
-.header-mobile {
+
+.header__container {
   background: var(--main-bg-color);
 }
 
