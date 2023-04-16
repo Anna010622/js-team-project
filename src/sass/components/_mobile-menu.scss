@@ -205,9 +205,11 @@
 }
 .mobile__button:hover .button__icon {
   fill: var(--accent-color-dark-bg);
-  color: var(--accent-color-dark-bg);
 }
 
+.mobile__button:focus .button__icon {
+  fill: var(--accent-color-dark-bg);
+}
 // .mobile-menu__button {
 //   display: inline-block;
 
@@ -276,9 +278,16 @@
   &:hover,
   &:focus {
     background-color: var(--accent-color-dark-bg);
+
     font-weight: 700;
     color: #111111;
   }
+}
+
+.mobile-nav__link--current {
+  background-color: var(--accent-color-dark-bg);
+  transform: translateX(16px);
+  font-weight: 700;
 }
 
 .log-in {

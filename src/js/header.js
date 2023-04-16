@@ -131,6 +131,6 @@ if (localStorage.getItem('key') !== null) {
       a[i].href === window.location.pathname ||
       a[i].href === window.location.href
     )
-      a[i].className += ' nav__link--current';
+      a[i].className += ' mobile-nav__link--current';
   }
 })();
