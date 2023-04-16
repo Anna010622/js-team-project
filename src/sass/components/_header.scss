@@ -2,13 +2,13 @@
   // position: sticky;
   // top: 0;
   // z-index: 1000;
-  background: var(--main-bg-color);
+  // background: var(--main-bg-color);
 }
 
 .header__container {
   // position: sticky;
   // top: 0;
-  background: var(--main-bg-color);
+  // background: var(--main-bg-color);
   display: flex;
   align-items: center;
   border: 1.5px solid #111111;
@@ -50,6 +50,7 @@
 }
 
 .icon_shop {
+  fill: currentColor;
   margin-left: 4px;
   // display: block;
 }
