@@ -182,7 +182,7 @@
   min-width: 184px;
   min-height: 48px;
   background: var(--accent-color);
-  border: 1.5px solid #111111;
+  border: 2px solid #111111;
   border-radius: 18px;
   color: #ffffff;
   overflow: hidden;
@@ -202,6 +202,10 @@
   //   align-self: flex-end;
   //   margin-left: 24px;
   // }
+}
+.mobile__button:hover .button__icon {
+  fill: var(--accent-color-dark-bg);
+  color: var(--accent-color-dark-bg);
 }
 
 // .mobile-menu__button {
@@ -299,4 +303,11 @@
   justify-content: center;
   top: 90%;
   z-index: 1001;
+}
+.log-out:hover .log-out__icon {
+  fill: var(--accent-color-dark-bg);
+}
+
+.log-out__icon {
+  fill: #111111;
 }

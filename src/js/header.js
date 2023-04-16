@@ -3,6 +3,11 @@ import BrowserSprite from '../images/icons.svg';
 const headerNav = document.querySelector('nav');
 const headerButton = document.querySelector('.header__container');
 const mobileMenu = document.querySelector('.mobile-menu__flex');
+let nameLogin = '';
+
+if (localStorage.getItem('key')) {
+  nameLogin = localStorage.getItem('key');
+}
 
 if (localStorage.getItem('key') !== null) {
   console.log(111);
@@ -27,13 +32,13 @@ if (localStorage.getItem('key') !== null) {
     'beforeend',
     `<button
       type="button"
-      class="js-open-modal button header__button"
+      class="js-open-modal button header__button header__button_logout"
       data-modal="buynow"
     >
       <svg class="button__icon" width="19" height="19">
         <use href=${BrowserSprite}#icon-user></use>
       </svg>
-      USER
+      ${nameLogin}
       <svg class="button__icon" width="23" height="26">
         <use href=${BrowserSprite}#icon-arrow-down></use>
       </svg>
@@ -49,7 +54,7 @@ if (localStorage.getItem('key') !== null) {
         <svg class="button__icon mobile-button__icon" width="16" height="16">
           <use href=${BrowserSprite}#icon-user></use>
         </svg>
-        USER
+        ${nameLogin}
       </button>
 
       <ul class="mobile-nav">
@@ -71,7 +76,7 @@ if (localStorage.getItem('key') !== null) {
         data-modal="buynow"
       >
         Log out
-        <svg class="button__icon" width="16" height="16">
+        <svg class="button__icon log-out__icon" width="16" height="16">
           <use href=${BrowserSprite}#icon-arrow-right></use>
         </svg>
       </button>`
@@ -85,7 +90,7 @@ if (localStorage.getItem('key') !== null) {
     'beforeend',
     `<button type="button" class="js-open-modal button header__button" data-modal="buynow">
         Sign up
-          <svg class="button__icon" width="20" height="20">
+          <svg class="button__icon " width="20" height="20">
             <use href=${BrowserSprite}#icon-arrow-right></use>
           </svg>
     </button>`
