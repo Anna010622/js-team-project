@@ -40,11 +40,11 @@ function getBookById(bookId) {
 
 closeModalBook.addEventListener('click', toggleModal);
 function toggleModal() {
-  const {book_image, title, author, description } = URL;
+  const {book_image, title, author, description } = book;
 
   const markup = `  
   <div class="book__img-wrapper"> 
-    <img class="book__img" src="${book_image}" alt="Book's image"/> 
+    <img class="modal-book__img" src="${book_image}" alt="Book's image"/> 
       <div class="book__description"> 
         <div class="book__info"> 
           <h2 class="book__title">${title}</h2> 
@@ -77,8 +77,9 @@ function toggleModal() {
   backdropEl.classList.toggle('visually-hidden');
   modalBookEl.insertAdjacentHTML('afterbegin', markup); 
   showModal();
+  addBookBtn.addEventListener('click', addToShoppingList(book))
 }
-
+const underBtnText = document.createElement('p');
 function addToShoppingList(book) { 
   let oneBook = { ...book }; 
   console.log(oneBook); 
@@ -93,8 +94,8 @@ function addToShoppingList(book) {
     addBookBtn.textContent = 'Add to shopping list'; 
     bookArray.push(oneBook); 
     toLocalStorage('bookarray', bookArray); 
-// isBookInShoppingList = true; 
-// updateModalBtn();
+isBookInShoppingList = true; 
+updateModalBtn();
 }
 
 function showModal() {

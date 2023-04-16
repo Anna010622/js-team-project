@@ -11,100 +11,230 @@
     overflow-y: scroll;
   
     transition: opacity 550ms linear, visibility 550ms linear;
+    &.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+  
+      & .modal-books-container {
+        transform: translateX(-50%) translateY(-20%);
+      }
+    }
+  }
+
+  .modal-books-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 96%;
+    height: auto;  
+    padding: 40px 24px;
+    background-color: #ffffff;
+    border: 2px solid #111111;
+    border-radius: 18px;
+   
+    transition: transform var(--transition);
+    z-index: 100;
+  
+    @media screen and (min-width: 375px) {
+      width: 335px;
+    }
+  
+    @media screen and (min-width: 768px) {
+      width: 579px;
+      padding: 40px;
+    }
   }
   
-  .modal-books__backdrop.is-hidden {
-    opacity: 0;
-    pointer-events: none;
+  .modal__close-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 0;
+    display: flex;
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  
+    @media screen and (min-width: 768px) {
+      top: 24px;
+      right: 24px;
+      width: 28px;
+      height: 28px;
+    }
   }
   
-//     .modal-books {
-//       transform: translate(-50%, -50%) scale(0.7);
+  .modal__close-icon {
+    fill: #ffffff;
   
-//       @media screen and (min-width: 768px) {
-//         transform: translate(0, 0) scale(0.7);
-//       }
-//     }
-//   
+    &:hover,
+    &:focus {
+      fill: var(--accent-color);
+    }
+  }
   
-//   .modal-books-wrapper {
-//     position: absolute;
-//     top: 50%;
-//     left: 50%;
+  .book__img-wrapper {
+    @media screen and (min-width: 768px) {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+  }
   
-//     background-color: var(--main-bg-color);
+  .modal-book__img {
+    width: 287px;
+    height: 408px;
+    border-radius: 8px;
   
-//     transform: translate(-50%, -50%) scale(1);
+    @media screen and (min-width: 768px) {
+      width: 192px;
+      height: 281px;
+    }
+  }
   
-//     transition: opacity 550ms linear, visibility 550ms linear;
+  .book__description {
+    @media screen and (max-width: 767px) {
+      margin-bottom: 40px;
+    }
   
-//     // @media screen and (min-width: 768px) {
-//     //   position: relative;
-//     //   top: 0;
-//     //   left: 0;
-//     //   width: 622px;
-//     //   height: 562px;
+    @media screen and (min-width: 768px) {
+        display: flex;
+        flex-direction: column;
+    }
+  }
   
-//     //   transform: translate(0, 0) scale(1);
-//     // }
-
-//     @media screen and (min-width: 1280px) {
-//       width: 579px;
-//       height: 465px;
-//     }
-//   }
+  .book__info {
+    margin: 14 0;
   
-//   .modal__close-btn {
-//     position: absolute;
-//     top: 12px;
-//     right: 12px;
+    @media screen and (min-width: 768px) {
+      margin: 0 0 20;
+    }
+  }
   
-//     width: 24px;
-//     height: 24px;
+  .book__title {
+    font-weight: 700;
+    font-size: 4vw;
+    line-height: 1.12;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    color: var(--main-text-color-dark-bg);
+    margin-bottom: 4px;
+  
+    @media screen and (min-width: 375px) {
+      font-size: 16px;
+    }
+  
+    @media screen and (min-width: 768px) {
+      font-size: 24px;
+      line-height: 1.17;
+      margin-bottom: 8px;
+    }
+  }
+  
+  .book__author {
+    font-style: italic;
+    font-weight: 400;
+    font-size: 3vw;
+    line-height: 1.17;
+    letter-spacing: -0.04em;
+    color: var(--secondary-title-color);
+    margin-bottom: 18px;
+  
+    @media screen and (min-width: 375px) {
+      font-size: 12px;
+    }
+  
+    @media screen and (min-width: 768px) {
+      font-size: 14px;
+      line-height: 1.29;
+      margin-bottom: 20px;
+    }
+  }
+  
+  .book__about {
+    font-weight: 400;
+    font-size: 4vw;
+    line-height: 1.29;
+    letter-spacing: -0.04em;
+    color: var(--main-text-color-dark-bg);
+  //  overflow-y: scroll; 
+  
+    @media screen and (min-width: 375px) {
+      font-size: 14px;
+    }
+  }
+  
+  .book-shops {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+  
+    @media screen and (max-width: 375px) {
+      margin-bottom: 40px;
+    }
+  }
+  
+  .book-shops__img {
+    filter: grayscale(100%);
+  
+    &:hover,
+    &:focus {
     
-//     // border-radius: 3px solid #111111;
-//     background-color: var(--main-bg-color);
-//     color: #111111;
-//     @media screen and (min-width: 768px) {
-//       width: 28px;
-//       height:28px;
-//     }
-
-//     &:hover,
-//     &:focus {
-//       background-color: var(--main-bg-color);
-//       fill: #4f2ee8;
-//     }
-//   }
-
-// <-------->
-  // .book__img-wrapper {
-  //   margin: 0 auto;
-  //   
-  // }
-  //   .book__text {
-  //   }
-//   .book__title {
-//     font-weight: 700;
-//     font-size: 16px;
-//     line-height: 18px;
-//     text-transform: uppercase;
-//     margin-bottom: 4px;
-    //   }
-    //   .book__author {
-    //   }
-    //   .book__quick-view {
-
-    //     font-size: 14px;
-    //     line-height: 18px;
-    //     margin-bottom: 18px;
-    // @media screen and (min-width: 768px) {
-    //     margin-bottom: 20px;
-    // }
-    //   }
-    // .modal-books__link-cell {
-    
-    // }
-
-    //   .modal-books__button-add {
-    //   }
+      filter: grayscale(100%) drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.35));
+    }
+  }
+  
+  .modal__add-btn {
+    display: block;
+    margin: 0 auto;
+    padding: 14px 20px;
+    font-weight: 700;
+    font-size: 4vw;
+    line-height: 1.29;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: var(--main-text-color-dark-bg);
+    background-color: transparent;
+    border: 2px solid var(--accent-color);
+    border-radius: 40px;
+    cursor: pointer;
+  
+    &:hover,
+    &:focus {
+      color: #ffffff;
+      background-color: var(--accent-color);
+    }
+  
+    @media screen and (min-width: 375px) {
+      font-size: 14px;
+    }
+  
+    @media screen and (min-width: 768px) {
+      width: 100%;
+      font-size: 18px;
+      line-height: 1.33;
+    }
+  }
+  
+  .modal-book__underbtn {
+    margin-top: 8px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 3vw;
+    line-height: 1.2;
+    letter-spacing: -0.04em;
+    color: var(--secondary-text-color-dark-bg);
+  
+    @media screen and (min-width: 375px) {
+      font-size: 10px;
+    }
+  
+    @media screen and (min-width: 768px) {
+      font-size: 12px;
+      line-height: 1.17;
+    }
+  }
