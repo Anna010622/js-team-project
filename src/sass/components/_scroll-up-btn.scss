@@ -1,17 +1,25 @@
 .up-btn {
   display: none;
-  width: 64px;
-  height: 64px;
+  width: 54px;
+  height: 54px;
   border-radius: 50%;
   background-color: #4f2ee8;
   border: none;
   position: fixed;
   top: 85%;
-  left: 20px;
-  transition: transform 0.2s;
+  right: 10px;
+  animation: show 3s forwards;
   &:hover,
   &:focus {
-    transform: scale(1.3);
-    background-color: #5bffef;
+    box-shadow: 0 0 1px 5px rgba(#4f2ee8, 0.3);
+  }
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
