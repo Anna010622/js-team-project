@@ -81,9 +81,6 @@ if (localStorage.getItem('key') !== null) {
         </svg>
       </button>`
   );
-
-  // headerNav.classList.add('hiden');
-  // headerButton.classList.add('hiden');
 } else {
   console.log(9999);
   headerButton.insertAdjacentHTML(
@@ -108,11 +105,7 @@ if (localStorage.getItem('key') !== null) {
         </svg>
       </button> `
   );
-
-  //   // headerNav.classList.remove('hiden');
-  //   // headerButton.classList.remove('hiden');
 }
-
 (function () {
   const a = document.querySelectorAll('.nav a');
   for (let i = a.length; i--; ) {
@@ -123,7 +116,6 @@ if (localStorage.getItem('key') !== null) {
       a[i].className += ' nav__link--current';
   }
 })();
-
 (function () {
   const a = document.querySelectorAll('.mobile-nav a');
   for (let i = a.length; i--; ) {
