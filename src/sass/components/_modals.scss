@@ -1,4 +1,4 @@
-.modal__backdrop {
+.modal-books__backdrop {
     position: fixed;
     top: 0px;
     left: 0px;
@@ -13,68 +13,69 @@
     transition: opacity 550ms linear, visibility 550ms linear;
   }
   
-  .modal__backdrop.is-hidden {
+  .modal-books__backdrop.is-hidden {
     opacity: 0;
     pointer-events: none;
-  
-    .modal-books {
-      transform: translate(-50%, -50%) scale(0.7);
-  
-      @media screen and (min-width: 768px) {
-        transform: translate(0, 0) scale(0.7);
-      }
-    }
   }
   
-  .modal-books-wrapper {
-    position: absolute;
-    top: 50%;
-    left: 50%;
+//     .modal-books {
+//       transform: translate(-50%, -50%) scale(0.7);
   
-    background-color: var(--main-bg-color);
+//       @media screen and (min-width: 768px) {
+//         transform: translate(0, 0) scale(0.7);
+//       }
+//     }
+//   
   
-    transform: translate(-50%, -50%) scale(1);
+//   .modal-books-wrapper {
+//     position: absolute;
+//     top: 50%;
+//     left: 50%;
   
-    transition: opacity 550ms linear, visibility 550ms linear;
+//     background-color: var(--main-bg-color);
   
-    // @media screen and (min-width: 768px) {
-    //   position: relative;
-    //   top: 0;
-    //   left: 0;
-    //   width: 622px;
-    //   height: 562px;
+//     transform: translate(-50%, -50%) scale(1);
   
-    //   transform: translate(0, 0) scale(1);
-    // }
+//     transition: opacity 550ms linear, visibility 550ms linear;
+  
+//     // @media screen and (min-width: 768px) {
+//     //   position: relative;
+//     //   top: 0;
+//     //   left: 0;
+//     //   width: 622px;
+//     //   height: 562px;
+  
+//     //   transform: translate(0, 0) scale(1);
+//     // }
 
-    @media screen and (min-width: 1280px) {
-      width: 579px;
-      height: 465px;
-    }
-  }
+//     @media screen and (min-width: 1280px) {
+//       width: 579px;
+//       height: 465px;
+//     }
+//   }
   
-  .modal__close-btn {
-    position: absolute;
-    top: 12px;
-    right: 12px;
+//   .modal__close-btn {
+//     position: absolute;
+//     top: 12px;
+//     right: 12px;
   
-    width: 24px;
-    height: 24px;
+//     width: 24px;
+//     height: 24px;
     
-    // border-radius: 3px solid #111111;
-    background-color: var(--main-bg-color);
-    color: #111111;
-    @media screen and (min-width: 768px) {
-      width: 28px;
-      height:28px;
-    }
+//     // border-radius: 3px solid #111111;
+//     background-color: var(--main-bg-color);
+//     color: #111111;
+//     @media screen and (min-width: 768px) {
+//       width: 28px;
+//       height:28px;
+//     }
 
-    &:hover,
-    &:focus {
-      background-color: var(--main-bg-color);
-      fill: #4f2ee8;
-    }
-  }
+//     &:hover,
+//     &:focus {
+//       background-color: var(--main-bg-color);
+//       fill: #4f2ee8;
+//     }
+//   }
 
 // <-------->
   // .book__img-wrapper {
@@ -93,7 +94,7 @@
     //   .book__author {
     //   }
     //   .book__quick-view {
-      
+
     //     font-size: 14px;
     //     line-height: 18px;
     //     margin-bottom: 18px;
@@ -107,4 +108,3 @@
 
     //   .modal-books__button-add {
     //   }
-    

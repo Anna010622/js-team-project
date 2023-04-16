@@ -1,31 +1,10 @@
-const save = (key, value) => {
-    try {
-      const serializedState = JSON.stringify(value);
-      localStorage.setItem(key, serializedState);
-    } catch (error) {
-      console.error("Set state error: ", error.message);
-    }
-};
-  
-const load = key => {
-    try {
-      const serializedState = localStorage.getItem(key);
-      return serializedState === null ? {added: []} : JSON.parse(serializedState);
-    } catch (error) {
-      console.error("Get state error: ", error.message);
-    }
-};
 
-const remove = key => {
-    try {
-      localStorage.removeItem(key);
-    } catch (error) {
-      console.error("Remove state error: ", error.message);
-    }
-};
-  
-export default localStorage = {
-    save,
-    load,
-    remove,
-};
+export function toLocalStorage(key, value) {
+  try {
+    const stringValue = JSON.stringify(value);
+    localStorage.setItem(key, stringValue);
+  }
+  catch (error) {
+    console.error(error.message)
+  }
+}

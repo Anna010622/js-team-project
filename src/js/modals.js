@@ -1,19 +1,24 @@
-// import { sendAddedToStorage } from './local-storage-set';
-// import { createBookMarkup } from "./create-book-markup";
-import axios from 'axios'
+import axios from 'axios';
+import { toLocalStorage } from './local-storage-set';
+import amazon1 from '../images/modal/amazon1@1x.png';
+import amazon2 from '../images/modal/amazon2@2x.png';
+import apple1 from '../images/modal/apple1@1x.png';
+import apple2 from '../images/modal/apple2@2x.png';
+import bookshop1 from '../images/modal/bookshop1@1x.png';
+import bookshop2 from '../images/modal/bookshop2@2x.png';
 
-const openModalBookEl = document.querySelector('[data-modal-book-open]');
-const closeModalBookBtn = document.querySelector('[data-modal-book-close]');
-const modalBook = document.querySelector('[data-modal-book]');
-const modalBookInf = document.querySelector('[data-modal-book-inf]');
+const backdropEl = document.querySelector('[data-modal]');
+const modalMainEl = document.querySelector('.modal-books-container');
+const modalBookEl = document.querySelector('.modal-books-wrapper');
+const closeModalBook = document.querySelector('[data-modal-close]');
+const addBookBtn = document.querySelector('.modal__add-btn');
+const booksSectionEl = document.querySelector('.books-section');
 
-openModalBookEl.addEventListener('click', onOpenModalBook);
-closeModalBookBtn.addEventListener('click', onCloseModalBook);
-modalBook.addEventListener('click', onBackdropClick);
 
-bookSectionEl.addEventListener('click', onBookClick);
+booksSectionEl.addEventListener('click', onBookClick);
+
 async function onBookClick(event) {
-  if(!event.target.dataset.book) {
+  if (!event.target.dataset.book) {
     return;
   }
 
@@ -22,81 +27,92 @@ async function onBookClick(event) {
     const response = await getBookById(bookId);
     const book = response.data;
     console.log(book);
-  }
-  catch (error) {
+  } catch (error) {
     console.log(error);
   }
 }
-function getBookById(bookid) {
-  const URL = `https://books-backend.p.goit.global/books/top-books/${bookid}`;
+
+function getBookById(bookId) {
+  const URL = `https://books-backend.p.goit.global/books/${bookId}`;
+
   return axios.get(URL);
 }
 
-let currentId = null;
+closeModalBook.addEventListener('click', toggleModal);
+function toggleModal() {
+  const {book_image, title, author, description } = URL;
 
-async function onOpenModalBook(e) {
-  if (!e.target.closest('.book-item')) {
-    return;
-  }
+  const markup = `  
+  <div class="book__img-wrapper"> 
+    <img class="book__img" src="${book_image}" alt="Book's image"/> 
+      <div class="book__description"> 
+        <div class="book__info"> 
+          <h2 class="book__title">${title}</h2> 
+          <h3 class="book__author">${author}</h3> 
+          <p class="book__about">${description}</p> 
+        </div> 
+        <div> 
+        <ul class="book-shops"> 
+        <li class="book-shops__item"> 
+          <a class="book-shops__link" href="${buy_links.find(link => link.name === 'Amazon')}" target="_blank" rel="noopener noreferrer" aria-label="Amazon"> 
+          <img class="book-shops__img" srcset=" ${amazon1} 1x, ${amazon2} 2x "src="${amazon1}" alt="Amazon" width="62" height="19"> 
+          </a> 
+        </li> 
+        <li class="book-shops__item"> 
+          <a class="book-shops__link" href="${buy_links.find(link => link.name === 'Apple Books')}" target="_blank" rel="noopener noreferrer" aria-label="Apple Books"> 
+          <img class="book-stores__img" srcset=" ${apple1} 1x, ${apple2} 2x "src="${apple1}" alt="Apple Books" width="33" height="32">
+          </a> 
+        </li> 
+        <li class="book-stores__item"> 
+          <a class="book-stores__link" href="${buy_links.find(link => link.name === 'Bookshop')}" target="_blank" rel="noopener noreferrer" aria-label="Bookshop"> 
+          <img class="book-stores__img" srcset=" ${bookshop1} 1x, ${bookshop2} 2x "src="${bookshop1}" alt="Bookshops" width="38" height="36">
+          </a> 
+        </li> 
+      </ul> 
+        </div> 
+      </div> 
+  </div> `; 
 
-  const bookId = e.target.closest('.book-item').dataset.id;
-
-  if (currentId !== bookId) {
-    currentId = bookId;
-
-    const bookDetailsById = await api.getBookById(bookId);
-    // console.log('bookDetailsById', bookDetailsById);
-
-    createBookMarkup(bookDetailsById);
-  }
-
-  window.addEventListener('keydown', onEscKeyPress);
-
- modalBook.classList.add('show-modal');
+  booksSectionEl.classList.toggle('modal-open');
+  backdropEl.classList.toggle('visually-hidden');
+  modalBookEl.insertAdjacentHTML('afterbegin', markup); 
+  showModal();
 }
 
-function createBookMarkup(bookById) {
-  modalBookInf.innerHTML = '';
-
-  console.log('books', bookById);
-
-  const { book_image, _id, title, author } =
-  bookById;
-
-  const markup = `<li class="books-list__item book" data-modal-book-open>
-  <div class="book__img-wrapper">
-    <img class="book__img" src="${book_image}" alt="book's image" data-book="${_id}" />
-    <div class="book__overlay" data-book="${_id}">
-      <p class="book__quick-view" data-book="${_id}">Quick view</p>
-    </div>
-  </div>
-  <div class="book__text" data-book="${_id}">
-    <h3 class="book__title" data-book="${_id}">${title}</h3>
-    <p class="book__author" data-book="${_id}">${author}</p>
-  </div>
-  <div class="book-shops">
-  </div>
-  </li>
-  `;
-
-modalBookInf.insertAdjacentHTML('beforeend', markup);
+function addToShoppingList(book) { 
+  let oneBook = { ...book }; 
+  console.log(oneBook); 
+  let bookArray = JSON.parse(localStorage.getItem('bookarray')) || []; 
+  if (bookArray.find(book => book._id === oneBook._id)) { 
+    addBookBtn.textContent = 'Remove from the shopping list'; 
+    underBtnText.textContent = 
+    'Congratulations! You have added the book to the shopping list. To delete, press the button "Remove from the shopping list".'; 
+    underBtnText.classList.add('modal-book__underbtn'); 
+    modalWrapEl.appendChild(underBtnText);
+    return; }
+    addBookBtn.textContent = 'Add to shopping list'; 
+    bookArray.push(oneBook); 
+    toLocalStorage('bookarray', bookArray); 
+// isBookInShoppingList = true; 
+// updateModalBtn();
 }
 
-function onCloseModalBook() {
-  window.removeEventListener('keydown', onEscKeyPress);
-
-  modalBook.classList.remove('show-modal');
+function showModal() {
+  backdropEl.classList.remove('visually-hidden');
+  document.addEventListener('keydown', handleCloseModal);
+  closeModalBook.addEventListener('click', closeModal);
+  document.addEventListener('click', handleCloseModal);
 }
 
-function onBackdropClick(e) {
-  if (e.currentTarget === e.target) {
-    onCloseModalBook();
-  }
+function closeModal() {
+  document.body.style.overflow = '';
+  backdropEl.classList.add('is-hidden');
+  document.removeEventListener('keydown', handleCloseModal);
+  closeModalBook.removeEventListener('click', closeModal);
+  document.removeEventListener('click', handleCloseModal);
 }
-
-function onEscKeyPress(e) {
-  const isEscKey = e.code === 'Escape';
-  if (isEscKey) {
-    onCloseModalBook();
+function handleCloseModal(event) {
+  if (event.target === backdropEl) {
+    closeModal();
   }
 }
