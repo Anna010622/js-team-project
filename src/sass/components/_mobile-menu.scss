@@ -74,7 +74,7 @@
   padding: 0;
   width: 28px;
   height: 28px;
-  // background-color: var(--main-bg-color);
+  background-color: var(--main-bg-color);
   border: none;
 
   fill: var(--main-text-color);
@@ -175,6 +175,8 @@
 }
 
 .header__container {
+  padding: 20px 18px;
+
   background: var(--main-bg-color);
   .dark & {
     background: var(--main-bg-color-dark-bg);
@@ -315,6 +317,7 @@
 }
 .mobile-button__icon {
   margin-right: 10px;
+  fill: #111111;
 }
 
 .log-out {
