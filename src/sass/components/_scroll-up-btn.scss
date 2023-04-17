@@ -1,0 +1,29 @@
+.up-btn {
+  display: none;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background-color: #4f2ee8;
+  border: none;
+  position: fixed;
+  top: 85%;
+  right: 10px;
+  animation: show 3s forwards;
+  &:hover,
+  &:focus {
+    box-shadow: 0 0 1px 5px rgba(#4f2ee8, 0.3);
+  }
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.up-btn-svg {
+  fill: #fff;
+}
