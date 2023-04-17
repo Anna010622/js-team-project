@@ -1,0 +1,154 @@
+.foundations {
+  background: radial-gradient(
+      183.6% 183.01% at 59.76% -23.42%,
+      #4f2ee8 18.03%,
+      #ffffff 100%
+    )
+    /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+  box-shadow: 0px 10px 10px rgba(245, 245, 247, 0.1);
+  border-radius: 16px;
+
+  padding-inline: 40px;
+  padding-top: 24px;
+  padding-bottom: 20px;
+  color: var(--main-text-color-dark-bg);
+  text-align: center;
+  width: 335px;
+
+  @media screen and (min-width: 768px) {
+    padding-bottom: 14px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 356px;
+    padding-bottom: 24px;
+  }
+}
+
+.shopping-list-sidebar > .foundations {
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+}
+
+.charity-title {
+  display: flex;
+  margin-bottom: 40px;
+}
+
+.charity-title__text {
+  font-size: 28px;
+  line-height: 1.14;
+  letter-spacing: -0.04em;
+  margin-right: 12px;
+}
+
+.charity-title__icon {
+  fill: var(--main-text-color-dark-bg);
+}
+
+.swiper {
+  width: 275px;
+  height: 188px;
+  margin-bottom: 16px;
+  @media screen and (min-width: 768px) {
+    height: 292px;
+    margin-bottom: 32px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 276px;
+    margin-bottom: 40px;
+  }
+}
+
+.charity-item.swiper-slide {
+  width: 275px;
+  height: 32px;
+}
+
+.charity-link {
+  display: flex;
+  align-items: center;
+}
+
+.charity_index {
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.04em;
+  margin-right: 14px;
+  @media screen and (min-width: 768px) {
+    margin-right: 16px;
+  }
+}
+
+.charity_logo {
+  height: 32px;
+  filter: brightness(0) invert(1);
+}
+
+.charity-next-slide {
+  width: 32px;
+  height: 32px;
+  background: #ffffff;
+  border-radius: 50%;
+  border: none;
+  text-align: center;
+
+  @media screen and (min-width: 768px) {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+.charity-next-slide__icon {
+  fill: var(--accent-color);
+}
+
+.charity-next-slide__icon {
+  position: relative;
+  top: 3px;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  // border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: var(--accent-color);
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  font-size: 14px;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 100000;
+  bottom: 5%;
+  left: 70%;
+  margin-left: -60px;
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+// /* Tooltip arrow */
+// .tooltip .tooltiptext::after {
+//   content: '';
+//   position: absolute;
+//   top: 100%;
+//   left: 50%;
+//   margin-left: -5px;
+//   border-width: 5px;
+//   border-style: solid;
+//   border-color: var(--accent-color);
+// }
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
