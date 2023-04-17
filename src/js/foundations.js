@@ -38,13 +38,9 @@ const swiper = new Swiper('.swiper', {
 
 const nextBtnEl = document.querySelector('.charity-next-slide');
 nextBtnEl.addEventListener('click', () => {
-  // swiper.navigation.nextEl
-  console.log(swiper)
-  console.log(swiper.loopedSlides)
   if (swiper.activeIndex + swiper.loopedSlides + 1 > swiper.slides.length) {
     swiper.slideToLoop(0)
   } else {
     swiper.slideNext()
   }
-  console.log('next slide');
 });
