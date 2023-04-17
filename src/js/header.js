@@ -123,7 +123,9 @@
     }
   }
 })();
+
 //*** */
+
 (function () {
   const a = document.querySelectorAll('.mobile-nav a');
   for (let i = a.length; i--; ) {
@@ -139,4 +141,5 @@
     }
   }
 })();
+
 //*** */
