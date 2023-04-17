@@ -11,9 +11,15 @@ for (toggleEl of toggleArray) {
     if (e.target.checked) {
       document.body.classList.add('dark');
       localStorage.setItem('theme', 'dark-theme');
+      for(let el of toggleArray) {
+        el.checked = true;
+      }
     } else {
       document.body.classList.remove('dark');
       localStorage.removeItem('theme');
+      for(let el of toggleArray) {
+        el.checked = false;
+      }
     }
   }
   
