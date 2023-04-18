@@ -13,7 +13,7 @@
   padding-bottom: 20px;
   color: var(--main-text-color-dark-bg);
   text-align: center;
-  width: 335px;
+  max-width: 335px;
 
   @media screen and (min-width: 768px) {
     padding-bottom: 14px;
