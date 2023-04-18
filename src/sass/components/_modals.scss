@@ -52,6 +52,10 @@
   //   transform: scale(1);
   // }
 }
+
+.dark .modal-book {
+  background-color: var(--main-bg-color-dark-bg);
+}
 .modal__btn-close {
   position: absolute;
   right: 12px;
