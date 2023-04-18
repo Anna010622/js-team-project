@@ -7,12 +7,13 @@ const booksSectionEl = document.querySelector('.books-section');
 const backdropEl = document.querySelector('.modal-book__backdrop');
 
 const STORAGE_KEY = 'books';
-const bookList = [];
-localStorage.setItem(STORAGE_KEY, JSON.stringify(bookList));
+let bookList = [];
 
 booksSectionEl.addEventListener('click', openModal);
 
 async function openModal(event) {
+  let getArray = localStorage.getItem(STORAGE_KEY);
+  bookList = JSON.parse(getArray);
   if (!event.target.dataset.book) {
     return;
   }
@@ -32,13 +33,22 @@ async function openModal(event) {
     btnAdd.addEventListener('click', onBtnAdd);
 
     const blockRemove = document.querySelector('.remove-block');
-    if (bookList.find(bookObj => bookObj._id === book._id)) {
+    if (
+      bookList !== null &&
+      bookList.find(bookObj => bookObj._id === book._id)
+    ) {
       blockRemove.classList.remove('hidden-btn');
       btnAdd.classList.add('hidden-btn');
     }
 
     function onBtnAdd() {
-      if (!bookList.find(bookObj => bookObj._id === book._id)) {
+      if (bookList === null) {
+        bookList = [];
+        bookList.push(book);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(bookList));
+        blockRemove.classList.remove('hidden-btn');
+        btnAdd.classList.add('hidden-btn');
+      } else if (!bookList.find(bookObj => bookObj._id === book._id)) {
         bookList.push(book);
         localStorage.setItem(STORAGE_KEY, JSON.stringify(bookList));
         blockRemove.classList.remove('hidden-btn');
