@@ -10,7 +10,6 @@ if (localStorage.getItem('Name')) {
 }
 
 if (localStorage.getItem('Name') !== null) {
-  console.log(111);
   headerNav.insertAdjacentHTML(
     'beforeend',
     `<ul class="nav">
@@ -82,7 +81,6 @@ if (localStorage.getItem('Name') !== null) {
       </button>`
   );
 } else {
-  console.log(9999);
   headerButton.insertAdjacentHTML(
     'beforeend',
     `<button type="button" class="js-open-modal button header__button" data-modal="signup-modal">

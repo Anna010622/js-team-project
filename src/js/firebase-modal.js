@@ -13,7 +13,7 @@ const signupButtonEl = document.querySelector('button[data-modal="signup"]');
 const signupButtonModalEl = document.querySelector(
   'button[data-modal="signup-modal"]'
 );
-// console.log(logoutButtonEl);
+
 //*** */
 const closeModalBtnEl = document.querySelector('[data-modal="close"]');
 const modalEl = document.querySelector('[data-modal]');
