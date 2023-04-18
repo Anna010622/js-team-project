@@ -1,3 +1,8 @@
+// .header-mobile {
+//   // display: flex;
+//   width: 100vw;
+// }
+
 .mobile-menu {
   position: relative;
   position: fixed;
@@ -6,13 +11,20 @@
   top: 0;
   left: 0;
   width: 100%;
+  height: 100%;
 
-  height: 100vh;
-  background: radial-gradient(
-    183.6% 183.01% at 59.76% -23.42%,
-    #4f2ee8 18.03%,
-    #ffffff 100%
-  );
+  // height: 111vh;
+  background-image: url('./../images/book_mobile__.png'),
+    radial-gradient(
+      183.6% 183.01% at 59.76% -23.42%,
+      #4f2ee8 18.03%,
+      #ffffff 100%
+    );
+  background-repeat: no-repeat;
+  // background-position: 100%;
+  background-position-y: 100%;
+  background-size: 100%;
+  overflow: hidden;
 
   transform: translateY(-100%);
 
@@ -28,21 +40,23 @@
 }
 
 .img__book {
-  position: absolute;
-  width: fit-content;
-  height: fit-content;
-  width: 98vw;
+  // position: absolute;
+  // width: fit-content;
+  // height: fit-content;
+  max-width: 98vw;
+
   // width: 450px;
-  // height: 100vw;
-  height: 400px;
-  background: url('./../images/book_mobile__.png');
+  height: 100vw;
+  // height: 400px;
+  // background: url('./../images/book_mobile__.png');
+
   // background-size: contain;
   background-size: cover;
   top: 50%;
   left: 0;
   // transform: translate(-10%, -80%);
 
-  z-index: 1000;
+  z-index: 1;
 }
 
 .mobile-menu.is-open {
@@ -74,7 +88,7 @@
   padding: 0;
   width: 28px;
   height: 28px;
-  // background-color: var(--main-bg-color);
+  background-color: var(--main-bg-color);
   border: none;
 
   fill: var(--main-text-color);
@@ -175,6 +189,8 @@
 }
 
 .header__container {
+  padding: 20px 18px;
+
   background: var(--main-bg-color);
   .dark & {
     background: var(--main-bg-color-dark-bg);
@@ -284,7 +300,7 @@
   min-width: 72px;
   // min-height: 34px;
   padding: 8px 16px;
-
+  z-index: 100;
   // padding-top: 32px;
   // padding-bottom: 13px;
   transition: background-color 250ms linear, color 250ms linear;
@@ -315,6 +331,7 @@
 }
 .mobile-button__icon {
   margin-right: 10px;
+  fill: #111111;
 }
 
 .log-out {

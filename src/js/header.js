@@ -107,49 +107,39 @@
 //   );
 // }
 
-// (function () {
-//   const a = document.querySelectorAll('.nav a');
-//   for (let i = a.length; i--; ) {
-//     if (
-//       a[i].href === window.location.pathname ||
-//       a[i].href === window.location.href
-//     )
-//       a[i].className += ' nav__link--current';
-//   }
-// })();
-// (function () {
-//   const a = document.querySelectorAll('.mobile-nav a');
-//   for (let i = a.length; i--; ) {
-//     if (
-//       a[i].href === window.location.pathname ||
-//       a[i].href === window.location.href
-//     )
-//       a[i].className += ' mobile-nav__link--current';
-//   }
-// })();
-
-// const currentNav = window.location.pathname;
-// const navLink = document.querySelectorAll('.nav a').forEach(link => {
-//   if (link.href.includes(`${currentNav}`)) {
-//     link.classList.add('nav__link--current');
-//   }
-// });
-
-// const currentMobileNav = window.location.pathname;
-// const navMobileLink = document
-//   .querySelectorAll('.mobile-nav a')
-//   .forEach(link => {
-//     if (link.href.includes(`${currentMobileNav}`)) {
-//       link.classList.add('nav__link--current');
-//       console.log(`${currentMobileNav}`);
-//     }
-//   });
-window.onload = setActive;
-function setActive() {
-  aObj = document.querySelectorAll('.nav a');
-  for (i = 0; i < aObj.length; i++) {
-    if (document.location.href.indexOf(aObj[i].href) >= 0) {
-      aObj[i].classList.add('nav__link--current');
+//*** */
+(function () {
+  const a = document.querySelectorAll('.nav a');
+  for (let i = a.length; i--; ) {
+    if (
+      a[i].href === window.location.pathname ||
+      a[i].href === window.location.href
+    ) {
+      a[i].className += ' nav__link--current';
+      return;
+    } else {
+      a[0].className += ' nav__link--current';
+      return;
     }
   }
-}
+})();
+
+//*** */
+
+(function () {
+  const a = document.querySelectorAll('.mobile-nav a');
+  for (let i = a.length; i--; ) {
+    if (
+      a[i].href === window.location.pathname ||
+      a[i].href === window.location.href
+    ) {
+      a[i].className += ' nav__link--current';
+      return;
+    } else {
+      a[0].className += ' nav__link--current';
+      return;
+    }
+  }
+})();
+
+//*** */
