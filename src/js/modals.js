@@ -85,23 +85,52 @@ function toggleModal({book_image, title, author, description, buy_links}) {
 
 const underBtnNote = document.querySelector('p');
 
+// function addToShoppingList(book) { 
+// let oneBook = { ...book };
+// let bookArray = JSON.parse(localStorage.getItem('bookarray')) || []; 
+
+// if (bookArray.find(book => book._id === oneBook._id)) { 
+//   addBookBtn.textContent = 'Remove from the shopping list'; 
+//   underBtnNote.textContent = 'Congratulations! You have added the book to the shopping list. To delete, press the button "Remove from the shopping list".'; 
+//   underBtnNote.classList.add('modal-book__underbtn'); 
+//   modalMainEl.appendChild(underBtnNote); 
+//   return; 
+// } 
+//   addBookBtn.textContent = 'Add to shopping list'; 
+//   bookArray.push(oneBook); 
+//   toLocalStorage('bookarray', bookArray); 
+// isBookInList = true;
+// // updateModalBtn();
+// }
+
 function addToShoppingList(book) { 
 let oneBook = { ...book };
 let bookArray = JSON.parse(localStorage.getItem('bookarray')) || []; 
 
 if (bookArray.find(book => book._id === oneBook._id)) { 
+  addBookBtn.classList.add('active');
   addBookBtn.textContent = 'Remove from the shopping list'; 
   underBtnNote.textContent = 'Congratulations! You have added the book to the shopping list. To delete, press the button "Remove from the shopping list".'; 
   underBtnNote.classList.add('modal-book__underbtn'); 
   modalMainEl.appendChild(underBtnNote); 
   return; 
 } 
+
   addBookBtn.textContent = 'Add to shopping list'; 
   bookArray.push(oneBook); 
   toLocalStorage('bookarray', bookArray); 
-isBookInList = true;
-updateModalBtn();
+  
+if (addBookBtn.classList.contains('active')) {
+  addBookBtn.classList.remove('active');
 }
+// isBookInList = true;
+// updateModalBtn();
+}
+
+
+
+
+
 
 function showModal() {
   backdropEl.classList.remove('is-hidden');
@@ -121,5 +150,8 @@ function handleCloseModal(event) {
   if (event.target === backdropEl) {
     closeModal();
   }
+  const Esc_key = 'Escape';
+  if (event.code === Esc_key) {
+    closeModal();
+  }
 }
-let isBookInList = false;

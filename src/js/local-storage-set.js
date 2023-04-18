@@ -1,10 +1,27 @@
 
-export function toLocalStorage(key, value) {
+// export function toLocalStorage(key, value) {
+//   try {
+//     const stringValue = JSON.stringify(value);
+//     localStorage.setItem(key, stringValue);
+//   }
+//   catch (error) {
+//     console.error(error.message)
+//   }
+// }
+
+export const toLocalStorage = (key, value) => {
   try {
-    const stringValue = JSON.stringify(value);
-    localStorage.setItem(key, stringValue);
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch (error) {
+    console.log(error.messege);
   }
-  catch (error) {
-    console.error(error.message)
+};
+export const getFromStorage = key => {
+  try {
+    const serialisedState = localStorage.getItem(key);
+    return serialisedState === null ? undefined : JSON.parse(serialisedState);
+  } catch (error) {
+    console.log(error.messege);
   }
-}
+};
+
