@@ -72,7 +72,7 @@
 //       </ul>
 //       <button
 //         type="button"
-//         class="js-open-modal button mobile__button log-out"
+//         class="js-open-modal button mobile__button mobile__button_logout log-out"
 //         data-modal="buynow"
 //       >
 //         Log out
@@ -133,10 +133,10 @@
       a[i].href === window.location.pathname ||
       a[i].href === window.location.href
     ) {
-      a[i].className += ' nav__link--current';
+      a[i].className += ' mobile-nav__link--current';
       return;
     } else {
-      a[0].className += ' nav__link--current';
+      a[0].className += ' mobile-nav__link--current';
       return;
     }
   }
