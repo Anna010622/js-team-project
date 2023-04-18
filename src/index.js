@@ -8,3 +8,4 @@ import './js/modals';
 import './js/dark-theme';
 import './js/scroll-up-btn';
 import './js/loader';
+import './js/farebase/service';
