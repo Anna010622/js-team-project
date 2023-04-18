@@ -1,11 +1,10 @@
 import Pagination from 'tui-pagination';
 
-import { booksItems } from './books';
 import bookImg from '../images/shopping_list/not_fond_img@1x.png';
 import bookImgRetina from '../images/shopping_list/not_fond_img@2x.png';
 import sprite from '../images/icons.svg';
 
-const STORAGE_KEY = 'book-list';
+const STORAGE_KEY = 'books';
 const booksListEl = document.querySelector('.shopping-list__books-list');
 const paginationEl = document.querySelector('.tui-pagination');
 const btnPaginationConteinerEl = document.querySelector(
@@ -13,11 +12,6 @@ const btnPaginationConteinerEl = document.querySelector(
 );
 const putBtnEl = document.querySelector('.put__btn');
 let currentPage = 1;
-
-function inputTextarea(e) {
-  e.preventDefault();
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(booksItems));
-}
 
 const bookListMarkup = data => {
   return data
@@ -188,5 +182,3 @@ const onBtnTrash = event => {
 booksListEl.addEventListener('click', onBtnTrash);
 
 btnPaginationConteinerEl.addEventListener('click', onPaginationButton);
-
-putBtnEl.addEventListener('click', inputTextarea);
