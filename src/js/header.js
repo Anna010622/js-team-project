@@ -33,7 +33,7 @@
 //     `<button
 //       type="button"
 //       class="js-open-modal button header__button header__button_logout"
-//       data-modal="buynow"
+//       data-modal="logout"
 //     >
 //       <svg class="button__icon" width="19" height="19">
 //         <use href=${BrowserSprite}#icon-user></use>
@@ -73,7 +73,7 @@
 //       <button
 //         type="button"
 //         class="js-open-modal button mobile__button mobile__button_logout log-out"
-//         data-modal="buynow"
+//         data-modal="logout"
 //       >
 //         Log out
 //         <svg class="button__icon log-out__icon" width="16" height="16">
@@ -85,7 +85,7 @@
 //   console.log(9999);
 //   headerButton.insertAdjacentHTML(
 //     'beforeend',
-//     `<button type="button" class="js-open-modal button header__button" data-modal="buynow">
+//     `<button type="button" class="js-open-modal button header__button" data-modal="signup">
 //         Sign up
 //           <svg class="button__icon " width="20" height="20">
 //             <use href=${BrowserSprite}#icon-arrow-right></use>
@@ -97,7 +97,7 @@
 //     `<button
 //         type="button"
 //         class="js-open-modal button mobile__button"
-//         data-modal="buynow"
+//         data-modal="signup"
 //       >
 //         Sign up
 //         <svg class="button__icon" width="16" height="16">
