@@ -130,14 +130,17 @@ const onPaginationButton = event => {
       currentPage < Math.ceil(parsedCards.length / 3))
   ) {
     currentPage = currentPage + 1;
-    console.log(currentPage);
     const onePageArray = parsedCards.splice((currentPage - 1) * 3, 3);
     booksListEl.innerHTML = bookListMarkup(onePageArray);
     event.target.classList.add('tui-is-selected');
     return currentPage;
+  } else if (
+    event.target.classList.contains('tui-next') &&
+    Math.ceil(parsedCards.length / 3)
+  ) {
+    return currentPage;
   } else if (event.target.classList.contains('tui-last')) {
     currentPage = Math.ceil(parsedCards.length / 3);
-    console.log(currentPage);
     const onePageArray = parsedCards.splice((currentPage - 1) * 3, 3);
     booksListEl.innerHTML = bookListMarkup(onePageArray);
     event.target.classList.add('tui-is-selected');
@@ -147,14 +150,14 @@ const onPaginationButton = event => {
     (event.target.classList.contains('tui-prev') && currentPage > 1)
   ) {
     currentPage = currentPage - 1;
-    console.log(currentPage);
     const onePageArray = parsedCards.splice((currentPage - 1) * 3, 3);
     booksListEl.innerHTML = bookListMarkup(onePageArray);
     event.target.classList.add('tui-is-selected');
     return currentPage;
+  } else if (event.target.classList.contains('tui-prev') && currentPage === 1) {
+    return currentPage;
   } else if (event.target.classList.contains('tui-first')) {
     currentPage = 1;
-    console.log(currentPage);
     const onePageArray = parsedCards.splice((currentPage - 1) * 3, 3);
     booksListEl.innerHTML = bookListMarkup(onePageArray);
     event.target.classList.add('tui-is-selected');
@@ -162,7 +165,6 @@ const onPaginationButton = event => {
   }
   {
     currentPage = Number(event.target.textContent);
-    console.log(currentPage);
     const onePageArray = parsedCards.splice((currentPage - 1) * 3, 3);
     booksListEl.innerHTML = bookListMarkup(onePageArray);
     event.target.classList.add('tui-is-selected');
