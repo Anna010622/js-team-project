@@ -27,11 +27,6 @@ async function openModal(event) {
     backdropEl.innerHTML = modalMarkup;
     backdropEl.classList.add('show-modal-book');
     body.classList.add('noScroll');
-    // backdropEl.addEventListener('click', onBackdropClick);
-
-    // const btnClose = document.querySelector('[data-modal-close]');
-    // btnClose.addEventListener('click', onBtnClose);
-    // window.addEventListener('keydown', onEscKeyPress);
 
     const btnAdd = document.querySelector('.js-btn-add');
     btnAdd.addEventListener('click', onBtnAdd);
@@ -56,7 +51,7 @@ async function openModal(event) {
     function onBtnRemove() {
       if (bookList.find(bookObj => bookObj._id === book._id)) {
         const foundBook = bookList.find(bookObj => bookObj._id === book._id);
-        bookIndex = bookList.indexOf(foundBook);
+        const bookIndex = bookList.indexOf(foundBook);
         bookList.splice(bookIndex, 1);
         localStorage.setItem(STORAGE_KEY, JSON.stringify(bookList));
         blockRemove.classList.add('hidden-btn');
