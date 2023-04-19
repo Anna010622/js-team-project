@@ -48,6 +48,7 @@
   letter-spacing: -0.04em;
   text-transform: uppercase;
   color: var(--main-text-color);
+  transition: color 250ms linear;
 
   .dark & {
     color: var(--main-text-color-dark-bg);
@@ -57,7 +58,6 @@
   font-size: 12px;
   line-height: calc(14 / 12);
   letter-spacing: -0.04em;
-
   color: var(--secondary-title-color);
 }
 

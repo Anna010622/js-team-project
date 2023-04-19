@@ -38,6 +38,8 @@ async function showBooksByCategory(event) {
     const sectionMarkup = createSectionMarkup(selectedCategory, books);
 
     booksSectionEl.innerHTML = sectionMarkup;
+
+    scrollToBookCategory();
   } catch (error) {
     console.log(error);
   }
@@ -68,4 +70,25 @@ function addClassCurrentCategory(selectedCategory) {
       link.classList.add('current-category');
     }
   });
+}
+
+export function scrollToBookCategory() {
+  window.scroll({
+    top: 770,
+    behavior: 'smooth',
+  });
+
+  if (window.matchMedia('(min-width: 768px)').matches) {
+    window.scroll({
+      top: 680,
+      behavior: 'smooth',
+    });
+  }
+
+  if (window.matchMedia('(min-width: 1280px)').matches) {
+    window.scroll({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }
 }

@@ -40,12 +40,17 @@
   border: 2px solid #111111;
   border-radius: 18px;
   overflow-y: scroll;
+
   // transform: scale(0);
   // transition: transform 300ms linear;
 
   @media screen and (min-width: 768px) {
     max-width: 579px;
     padding: 40px;
+  }
+
+  .dark & {
+    border: 2px solid var(--main-text-color-dark-bg);
   }
 
   // .backdrop.show-modal-book & {
@@ -75,10 +80,17 @@
 .modal__button-icon {
   width: 24px;
   height: 24px;
+  transition: fill 250ms linear;
 
   @media screen and (min-width: 768px) {
     width: 28px;
     height: 28px;
+  }
+  .modal__btn-close:hover & {
+    fill: var(--accent-color);
+  }
+  .dark & {
+    fill: var(--main-text-color-dark-bg);
   }
 }
 .modal__inner {
@@ -134,11 +146,11 @@
 }
 .modal__book-author {
   margin-bottom: 18px;
+
   font-size: 12px;
   line-height: calc(14 / 12);
   letter-spacing: -0.04em;
   font-style: italic;
-
   color: var(--secondary-title-color);
 
   @media screen and (min-width: 768px) {
@@ -164,6 +176,11 @@
 
   display: flex;
   gap: 20px;
+  align-items: center;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 0;
+  }
 }
 .modal__book-link {
 }
@@ -204,6 +221,10 @@
   text-align: center;
   letter-spacing: -0.04em;
   color: rgba(17, 17, 17, 0.5);
+
+  .dark & {
+    color: rgba(255, 255, 255, 0.5);
+  }
 }
 
 .hidden-btn {

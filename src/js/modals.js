@@ -135,6 +135,7 @@ function onBtnClose() {
   backdropEl.classList.remove('show-modal-book');
   body.classList.remove('noScroll');
   backdropEl.removeEventListener('click', onBackdropClick);
+  window.removeEventListener('keydown', onEscKeyPress);
 }
 function onEscKeyPress(event) {
   if (event.code === 'Escape') {
@@ -148,5 +149,6 @@ function onBackdropClick(event) {
   if (event.currentTarget === event.target) {
     event.target.classList.remove('show-modal-book');
     body.classList.remove('noScroll');
+    window.removeEventListener('keydown', onEscKeyPress);
   }
 }

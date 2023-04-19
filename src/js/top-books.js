@@ -2,6 +2,7 @@ import { getTopBooks } from './get-top-books';
 import { createBookMarkup } from './create-book-markup';
 import { createMessageMarkup } from './message-markup';
 import showHideLoader from './loader';
+import { scrollToBookCategory } from './books-by-category';
 
 const booksSectionEl = document.querySelector('.books-section');
 const allCategories = document.querySelector('[data-value="all-categories"]');
@@ -14,6 +15,7 @@ getAllBooks();
 mediaValue.addEventListener('change', getAllBooks);
 
 allCategories.addEventListener('click', getAllBooks);
+allCategories.addEventListener('click', scrollToBookCategory);
 
 async function getAllBooks() {
   showHideLoader();

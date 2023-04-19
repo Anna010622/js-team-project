@@ -13,7 +13,7 @@
 }
 .categories__list {
 }
-.categories__item {
+.categories__item:not(:last-child) {
   margin-bottom: 24px;
   @media screen and (min-width: 768px) {
     margin-bottom: 32px;
@@ -27,7 +27,7 @@
   color: var(--secondary-text-color);
   cursor: pointer;
 
-  transition: color 250ms linear;
+  transition: color 250ms linear, font-weight 250ms linear;
 
   &:hover,
   &:focus {

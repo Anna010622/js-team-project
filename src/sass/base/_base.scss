@@ -4,10 +4,11 @@ html {
     width: 8px;
   }
   ::-webkit-scrollbar-thumb {
-    background: #e0e0e0;
+    background-color: #e0e0e0;
     border-radius: 12px;
+    transition: background-color 2500ms linear;
     .dark & {
-      background: #111111;
+      background-color: #111111;
     }
   }
 }
@@ -16,9 +17,14 @@ body {
   font-family: var(--main-font);
   color: var(--main-text-color);
   background-color: var(--main-bg-color);
+  transition: background-color 250ms linear, color 250ms linear;
 
   &.dark {
     color: var(--main-text-color-dark-bg);
     background-color: var(--main-bg-color-dark-bg);
   }
+}
+
+.noScroll {
+  overflow: hidden;
 }
