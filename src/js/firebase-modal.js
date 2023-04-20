@@ -31,11 +31,11 @@ function localSet(event) {
   location.reload(all);
 }
 //
-backdropFirebase.addEventListener('click', backdropClose);
 
 if (signupButtonEl) {
   signupButtonEl.addEventListener('click', toggleModalOpen);
   signupButtonModalEl.addEventListener('click', toggleModalOpen);
+  backdropFirebase.addEventListener('click', backdropClose);
 
   function toggleModalOpen() {
     closeModalBtnEl.addEventListener('click', toggleModalClose);
@@ -45,11 +45,17 @@ if (signupButtonEl) {
     window.addEventListener('keydown', escCloses);
   }
 
-  function backdropClose() {
-    backdropFirebase.classList.toggle('is-hidden');
-    bodyEl.classList.toggle('no-scroll');
-    window.removeEventListener('keydown', escCloses);
-    closeModalBtnEl.removeEventListener('click', toggleModalClose);
+  function backdropClose(event) {
+    if (event.currentTarget === event.target) {
+      backdropFirebase.classList.toggle('is-hidden');
+      bodyEl.classList.toggle('no-scroll');
+      window.removeEventListener('keydown', escCloses);
+      closeModalBtnEl.removeEventListener('click', toggleModalClose);
+    }
+    // backdropFirebase.classList.toggle('is-hidden');
+    // bodyEl.classList.toggle('no-scroll');
+    // window.removeEventListener('keydown', escCloses);
+    // closeModalBtnEl.removeEventListener('click', toggleModalClose);
   }
   function toggleModalClose() {
     backdropFirebase.classList.toggle('is-hidden');
