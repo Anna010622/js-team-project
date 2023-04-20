@@ -25,7 +25,7 @@
   margin-right: 20px;
   margin-bottom: 4px;
   position: absolute;
-  background-size: cover;
+  background-size: contain;
 
   @media screen and (min-width: 768px) {
     width: 116px;
@@ -46,9 +46,15 @@
   background-image: url('../images/shopping_list/amazon@1x.png');
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
+  transition: filter 500ms linear;
 }
 
 .dark .shopping-list__amazon {
+  filter: invert(0.6);
+}
+
+.dark .shopping-list__amazon:hover,
+.dark .shopping-list__amazon:focus {
   filter: invert(0.6);
 }
 
@@ -68,6 +74,7 @@
   background-image: url('../images/shopping_list/apple_book@1x.png');
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
+  transition: filter 500ms linear;
 }
 
 @media (min-device-pixel-ratio: 2),
@@ -86,6 +93,7 @@
   background-image: url('../images/shopping_list/book_shop@1x.png');
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
+  transition: filter 500ms linear;
 }
 
 @media (min-device-pixel-ratio: 2),
@@ -103,7 +111,18 @@
 
 .shopping-list__amazon:hover,
 .shopping-list__apple-book:hover,
-.shopping-list__bookshop:hover {
+.shopping-list__bookshop:hover,
+.shopping-list__amazon:focus,
+.shopping-list__apple-book:focus,
+.shopping-list__bookshop:focus {
+  mix-blend-mode: luminosity;
+  filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.15));
+}
+
+.dark .shopping-list__apple-book:hover,
+.dark .shopping-list__bookshop:hover,
+.dark .shopping-list__apple-book:focus,
+.dark .shopping-list__bookshop:focus {
   mix-blend-mode: luminosity;
   filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.15));
 }
@@ -204,7 +223,7 @@
 }
 
 .shopping-list__link-list {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 14px;
 
@@ -289,9 +308,11 @@
   width: 38px;
   height: 38px;
   border-radius: 50%;
+  transition: background-color 500ms linear, color 500ms linear;
 }
 
-.tui-page-btn:hover {
+.tui-page-btn:hover,
+.tui-page-btn:focus {
   background-color: black;
   color: #ffffff;
   cursor: pointer;
@@ -330,17 +351,22 @@
 .tui-prev {
   background-color: black;
   color: var(--secondary-title-color);
+  transition: background-color 500ms linear;
 }
 
 .dark .tui-prev:hover,
-.dark .tui-first:hover {
+.dark .tui-first:hover,
+.dark .tui-prev:focus,
+.dark .tui-first:focus {
   background-color: #ffffff;
   color: black;
+  transition: color 500ms linear;
 }
 
 .dark .tui-first,
 .dark .tui-prev {
   color: #ffffff;
+  transition: background-color 500ms linear, color 500ms linear;
 }
 
 .tui-next,
@@ -364,10 +390,13 @@
   background-repeat: no-repeat;
   background-position: 40% 50%, 60% 50%;
   align-items: center;
+  transition: background-color 500ms linear;
 }
 
 .tui-first:hover,
-.tui-prev:hover {
+.tui-prev:hover,
+.tui-first:focus,
+.tui-prev:focus {
   background-color: #ffffff;
 }
 
@@ -381,6 +410,7 @@
   background-repeat: no-repeat;
   background-position: 50% 50%;
   align-items: center;
+  transition: background-color 500ms linear;
 }
 
 .tui-ico-next {
@@ -406,4 +436,8 @@
   background-repeat: no-repeat;
   background-position: 40% 50%, 60% 50%;
   align-items: center;
+}
+
+.emptyPaginations {
+  display: none;
 }
