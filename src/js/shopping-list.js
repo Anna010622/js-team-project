@@ -1,5 +1,4 @@
 import Pagination from 'tui-pagination';
-import showHideLoader from './loader';
 import bookImg from '../images/shopping_list/not_fond_img@1x.png';
 import bookImgRetina from '../images/shopping_list/not_fond_img@2x.png';
 import sprite from '../images/icons.svg';
@@ -160,7 +159,6 @@ const onPaginationButton = event => {
       currentPage === Math.ceil(parsedCards.length / 3))
   ) {
     currentPage = currentPage - 1;
-    console.log(`after${currentPage}`);
     const onePageArray = parsedCards.splice((currentPage - 1) * 3, 3);
     booksListEl.innerHTML = bookListMarkup(onePageArray);
     event.target.classList.add('tui-is-selected');
@@ -170,7 +168,6 @@ const onPaginationButton = event => {
     currentPage > 1
   ) {
     currentPage = currentPage - 2;
-    console.log(`after${currentPage}`);
     const onePageArray = parsedCards.splice((currentPage - 1) * 3, 3);
     booksListEl.innerHTML = bookListMarkup(onePageArray);
     event.target.classList.add('tui-is-selected');
