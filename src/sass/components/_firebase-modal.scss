@@ -2,11 +2,13 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1001;
+  z-index: 11;
 
   width: 100%;
   height: 100%;
   background-color: #1227e4;
+
+  transition: opacity 250ms linear, visibility 250ms linear;
 }
 
 .backdrop-firebase.is-hidden {
@@ -23,6 +25,7 @@
   max-width: 335px;
   max-height: 384px;
   padding: 20px 20px 40px 20px;
+  z-index: 15;
 
   background-color: #f6f6f6;
   border: 2px solid #111111;
@@ -57,9 +60,13 @@
   width: 28px;
   height: 28px;
 
+  background-color: var(--main-bg-color);
   border-radius: 50%;
   cursor: pointer;
   border: none;
+  .dark & {
+    background-color: var(--main-bg-color-dark-bg);
+  }
 }
 
 .icon-close {

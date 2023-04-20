@@ -5,9 +5,7 @@ const logoutButtonEl = document.querySelector('button[data-modal="logout"]');
 const logoutButtonMobileEl = document.querySelector(
   'button[data-modal="logout-modal"]'
 );
-const submitModal = document.querySelector(
-  '.backdrop-firebase .modal-form-button'
-);
+const submitModal = document.querySelector('.modal-form-button');
 
 const signupButtonEl = document.querySelector('button[data-modal="signup"]');
 const signupButtonModalEl = document.querySelector(
@@ -16,28 +14,67 @@ const signupButtonModalEl = document.querySelector(
 
 //*** */
 const closeModalBtnEl = document.querySelector('[data-modal="close"]');
-const modalEl = document.querySelector('[data-modal]');
+const modalEl = document.querySelector('[name="modal-form"]');
+
 const bodyEl = document.querySelector('body');
-const headerEl = document.querySelector('header');
+// const headerEl = document.querySelector('header');
 const modal = document.getElementById('modal');
 
+modalEl.addEventListener('submit', localSet);
 let nameUser = '';
-submitModal.addEventListener('click', localSet);
-function localSet() {
-  nameUser = document.querySelector('[id="user_name"]').value;
+submitModal.addEventListener('submit', localSet);
+
+function localSet(event) {
+  event.preventDefault();
+  nameUser = modalEl.elements.user_name.value;
   localStorage.setItem('Name', `${nameUser}`);
   location.reload(all);
 }
+//
 
 if (signupButtonEl) {
-  signupButtonEl.addEventListener('click', toggleModal);
-  signupButtonModalEl.addEventListener('click', toggleModal);
-  closeModalBtnEl.addEventListener('click', toggleModal);
-  function toggleModal() {
+  signupButtonEl.addEventListener('click', toggleModalOpen);
+  signupButtonModalEl.addEventListener('click', toggleModalOpen);
+  backdropFirebase.addEventListener('click', backdropClose);
+
+  function toggleModalOpen() {
+    closeModalBtnEl.addEventListener('click', toggleModalClose);
+
     backdropFirebase.classList.toggle('is-hidden');
     bodyEl.classList.toggle('no-scroll');
+    window.addEventListener('keydown', escCloses);
   }
-  return;
+
+  function backdropClose(event) {
+    if (event.currentTarget === event.target) {
+      backdropFirebase.classList.toggle('is-hidden');
+      bodyEl.classList.toggle('no-scroll');
+      window.removeEventListener('keydown', escCloses);
+      closeModalBtnEl.removeEventListener('click', toggleModalClose);
+    }
+    // backdropFirebase.classList.toggle('is-hidden');
+    // bodyEl.classList.toggle('no-scroll');
+    // window.removeEventListener('keydown', escCloses);
+    // closeModalBtnEl.removeEventListener('click', toggleModalClose);
+  }
+  function toggleModalClose() {
+    backdropFirebase.classList.toggle('is-hidden');
+    bodyEl.classList.toggle('no-scroll');
+    window.removeEventListener('keydown', escCloses);
+
+    closeModalBtnEl.removeEventListener('click', toggleModalClose);
+  }
+
+  // window.addEventListener('keydown', escCloses);
+  function escCloses(event) {
+    if (event.code === 'Escape') {
+      backdropFirebase.classList.toggle('is-hidden');
+      bodyEl.classList.toggle('no-scroll');
+      window.removeEventListener('keydown', escCloses);
+      backdropFirebase.removeEventListener('click', backdropClose);
+      closeModalBtnEl.removeEventListener('click', toggleModalClose);
+    }
+  }
 }
 
 if (logoutButtonEl) {
@@ -45,24 +82,9 @@ if (logoutButtonEl) {
   logoutButtonMobileEl.addEventListener('click', localRemove);
   function localRemove() {
     localStorage.removeItem('Name');
-    location.reload(all);
+
+    window.location = './index.html';
+    window.removeEventListener('keydown', escCloses);
   }
   return;
 }
-// name = 'user_name';
-
-// const signInLink = document.querySelector('a[data-modal-open]');
-
-// const modal2 = document.getElementById('modal_2');
-
-// signInLink.addEventListener('click', () => {
-//   modal.classList.toggle('is-hidden');
-//   modal2.classList.toggle('is-hidden');
-// });
-
-window.addEventListener('keydown', event => {
-  if (event.key === 'Escape') {
-    modalEl.classList.toggle('is-hidden');
-    modal2.classList.toggle('is-hidden');
-  }
-});
