@@ -33,6 +33,12 @@ async function openModal(event) {
     btnAdd.addEventListener('click', onBtnAdd);
 
     const blockRemove = document.querySelector('.remove-block');
+
+    if (localStorage.getItem('Name') === null) {
+      btnAdd.style.display = 'none';
+      blockRemove.style.display = 'none';
+    }
+
     if (
       bookList !== null &&
       bookList.find(bookObj => bookObj._id === book._id)
